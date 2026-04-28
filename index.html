@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LACE · Tracker de Value Streams</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#F5F4F0;--surface:#FFF;--surface2:#EFEDE8;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);
+  --text:#1A1917;--text2:#6B6860;--text3:#9B9890;
+  --coppel-navy:#1B2B6B;--coppel-yellow:#F5C300;
+  --purple:#1B2B6B;--purple-bg:#E8EBF5;--purple-text:#1B2B6B;
+  --teal:#1D9E75;--teal-bg:#E1F5EE;--teal-text:#085041;
+  --amber:#BA7517;--amber-bg:#FAEEDA;--amber-text:#633806;
+  --red:#E24B4A;--red-bg:#FCEBEB;--red-text:#791F1F;
+  --green:#639922;--green-bg:#EAF3DE;--green-text:#27500A;
+  --blue:#378ADD;--blue-bg:#E6F1FB;--blue-text:#0C447C;
+  --r-sm:6px;--r-md:10px;--r-lg:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.5;}
+.shell{display:flex;min-height:100vh;}
+
+.sidebar{width:230px;min-width:230px;background:var(--coppel-navy);border-right:none;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;}
+.sb-head{border-bottom:1px solid rgba(255,255,255,0.12);}
+.sb-topbar{background:var(--coppel-yellow);height:5px;width:100%;}
+.sb-brand{padding:16px 18px 14px;display:flex;align-items:center;gap:8px;}
+.sb-logo-dashes{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--coppel-yellow);letter-spacing:.05em;}
+.sb-logo-text{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;color:#FFF;}
+.sb-divider{width:1px;height:24px;background:rgba(255,255,255,0.2);margin:0 6px;}
+.sb-lace{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.55);letter-spacing:.1em;text-transform:uppercase;line-height:1.3;}
+.sb-subtitle{font-size:11px;color:rgba(255,255,255,0.45);padding:0 18px 14px;line-height:1.4;}
+.sb-section{padding:12px 10px 6px;}
+.sb-label{font-size:10px;font-weight:500;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.08em;padding:0 8px;margin-bottom:4px;}
+.vs-btn{display:block;width:100%;text-align:left;background:none;border:none;border-left:2px solid transparent;padding:7px 10px;border-radius:var(--r-sm);font-family:'DM Sans',sans-serif;font-size:12.5px;color:rgba(255,255,255,0.65);cursor:pointer;transition:all .15s;line-height:1.3;}
+.vs-btn:hover{background:rgba(255,255,255,0.07);color:#FFF;}
+.vs-btn.active{background:rgba(245,195,0,0.15);color:#FFF;font-weight:500;border-left:2px solid var(--coppel-yellow);}
+.vs-btn .vp{font-family:'DM Mono',monospace;font-size:10px;float:right;margin-top:1px;opacity:.6;}
+.vs-btn .vi{font-size:9px;display:block;margin-top:1px;}
+.sb-foot{margin-top:auto;padding:14px 18px;border-top:1px solid rgba(255,255,255,0.1);font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;}
+.sb-foot strong{color:rgba(255,255,255,0.65);}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--coppel-yellow);display:inline-block;margin-right:5px;vertical-align:middle;}
+
+.main{flex:1;padding:28px 32px;max-width:calc(100% - 230px);overflow-x:hidden;}
+.mhead{margin-bottom:24px;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
+.mtitle{font-size:22px;font-weight:500;color:var(--text);}
+
+.tabs{display:flex;gap:6px;margin-bottom:20px;border-bottom:0.5px solid var(--border2);padding-bottom:12px;}
+.tab-btn{background:none;border:0.5px solid transparent;padding:6px 16px;border-radius:20px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text2);cursor:pointer;transition:all .15s;}
+.tab-btn:hover{background:var(--surface2);color:var(--text);}
+.tab-btn.ac{background:#E8EBF5;color:var(--coppel-navy);border-color:rgba(27,43,107,.2);font-weight:500;}
+.tab-btn.ah{background:var(--teal-bg);color:var(--teal-text);border-color:rgba(29,158,117,.2);font-weight:500;}
+.tab-btn.ax{background:var(--surface2);color:var(--text);border-color:var(--border2);font-weight:500;}
+
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.mcard{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--r-md);padding:14px 16px;}
+.mnum{font-size:26px;font-weight:300;font-family:'DM Mono',monospace;line-height:1;}
+.mlbl{font-size:11px;color:var(--text3);margin-top:5px;}
+
+.banner{border-radius:var(--r-md);padding:10px 14px;margin-bottom:16px;font-size:12px;line-height:1.5;}
+.banner strong{font-weight:500;display:block;margin-bottom:2px;}
+
+/* Import banner */
+.import-banner{background:var(--surface);border:1.5px dashed var(--border2);border-radius:var(--r-lg);padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .15s;}
+.import-banner:hover{border-color:var(--coppel-navy);background:#E8EBF5;}
+.import-icon{width:40px;height:40px;border-radius:var(--r-md);background:#E8EBF5;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
+.import-txt strong{font-size:13px;font-weight:500;color:var(--text);display:block;}
+.import-txt span{font-size:12px;color:var(--text2);}
+.import-stamp{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);margin-top:6px;display:block;}
+
+.atbl{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+.atbl-head{display:grid;grid-template-columns:1fr 170px 90px;gap:12px;padding:10px 16px;background:var(--surface2);border-bottom:0.5px solid var(--border2);font-size:10px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;}
+.arow{padding:12px 16px;border-bottom:0.5px solid var(--border);transition:background .1s;}
+.arow:last-child{border-bottom:none;}
+.arow:hover{background:#FAFAF8;}
+.arow-top{display:grid;grid-template-columns:1fr 170px 90px;gap:12px;align-items:start;}
+.aname{font-size:13px;color:var(--text);line-height:1.4;}
+.abadge{display:inline-block;font-size:10px;padding:1px 7px;border-radius:20px;margin-top:4px;font-family:'DM Mono',monospace;background:var(--amber-bg);color:var(--amber-text);}
+.abadge-imp{display:inline-block;font-size:10px;padding:1px 7px;border-radius:20px;margin-top:2px;margin-left:4px;font-family:'DM Mono',monospace;background:var(--blue-bg);color:var(--blue-text);}
+.bwrap{margin-top:6px;background:var(--bg);border-radius:3px;height:4px;}
+.bfill{height:4px;border-radius:3px;transition:width .3s;}
+.ssel{width:100%;padding:6px 8px;border:0.5px solid var(--border2);border-radius:var(--r-sm);font-family:'DM Sans',sans-serif;font-size:12px;background:var(--surface);color:var(--text);cursor:pointer;outline:none;}
+.ssel:focus{border-color:var(--coppel-navy);}
+.ssel.imported{border-color:rgba(27,43,107,.3);background:#E8EBF5;}
+.pcol{text-align:right;}
+.pnum{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;color:var(--text);}
+.spill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;margin-top:4px;font-family:'DM Mono',monospace;}
+
+.nrow{margin-top:8px;display:flex;align-items:flex-start;gap:8px;}
+.nlabel{font-size:10px;color:var(--text3);white-space:nowrap;margin-top:7px;font-family:'DM Mono',monospace;letter-spacing:.04em;}
+.ninput{flex:1;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text);background:var(--bg);border:0.5px solid transparent;border-radius:var(--r-sm);padding:5px 8px;resize:none;outline:none;line-height:1.4;min-height:30px;transition:border-color .15s,background .15s;overflow:hidden;}
+.ninput:focus{border-color:var(--border2);background:var(--surface);}
+.ninput::placeholder{color:var(--text3);}
+.ninput.hn{background:#FDFCF7;border-color:rgba(186,117,23,.2);}
+
+.lgrid{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+.litem{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);}
+.ldot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+
+.ctbl{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+.chead{display:grid;grid-template-columns:200px 1fr 60px 1fr 60px;gap:10px;padding:10px 16px;background:var(--surface2);border-bottom:0.5px solid var(--border2);font-size:10px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;align-items:center;}
+.crow{display:grid;grid-template-columns:200px 1fr 60px 1fr 60px;gap:10px;padding:11px 16px;border-bottom:0.5px solid var(--border);align-items:center;cursor:pointer;transition:background .1s;}
+.crow:last-child{border-bottom:none;}
+.crow:hover{background:#FAFAF8;}
+.crow.ca{background:#E8EBF5;}
+.cvn{font-size:13px;color:var(--text);}
+.crow.ca .cvn{font-weight:500;color:var(--coppel-navy);}
+.cpct{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;text-align:right;}
+.cimp{font-size:9px;color:var(--blue-text);font-family:'DM Mono',monospace;display:block;}
+
+.bbar{margin-top:20px;background:var(--surface);border:0.5px solid var(--border2);border-radius:var(--r-md);padding:14px 16px;}
+.bbar-title{font-size:12px;font-weight:500;color:var(--text2);margin-bottom:10px;}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.abtn{padding:7px 14px;border:0.5px solid var(--border2);border-radius:var(--r-sm);background:var(--surface);font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text);cursor:pointer;transition:all .15s;}
+.abtn:hover{background:var(--surface2);}
+.abtn.g{background:var(--green-bg);color:var(--green-text);border-color:rgba(99,153,34,.25);}
+.abtn.b{background:var(--blue-bg);color:var(--blue-text);border-color:rgba(55,138,221,.25);}
+.abtn.r{background:none;border:none;color:var(--red);text-decoration:underline;font-size:12px;cursor:pointer;padding:7px 4px;}
+.bhint{font-size:11px;color:var(--text3);line-height:1.6;}
+#toast{display:none;margin-top:10px;padding:8px 12px;border-radius:var(--r-sm);font-size:12px;}
+#exparea{display:none;margin-top:12px;}
+#exparea textarea{width:100%;height:180px;font-family:'DM Mono',monospace;font-size:11px;padding:10px;border:0.5px solid var(--border2);border-radius:var(--r-sm);background:var(--surface);color:var(--text);resize:vertical;outline:none;}
+.panel{display:none;}.panel.v{display:block;}
+
+/* Import modal overlay */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:100;align-items:center;justify-content:center;}
+.modal-bg.open{display:flex;}
+.modal{background:var(--surface);border-radius:var(--r-lg);padding:24px;width:520px;max-width:95vw;border:0.5px solid var(--border2);}
+.modal h3{font-size:16px;font-weight:500;margin-bottom:6px;}
+.modal p{font-size:12px;color:var(--text2);margin-bottom:16px;line-height:1.6;}
+.modal-steps{background:var(--bg);border-radius:var(--r-md);padding:14px 16px;margin-bottom:16px;}
+.modal-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;font-size:12px;line-height:1.5;}
+.modal-step:last-child{margin-bottom:0;}
+.step-num{width:20px;height:20px;border-radius:50%;background:#E8EBF5;color:var(--coppel-navy);font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.modal-vs-sel{width:100%;padding:8px 10px;border:0.5px solid var(--border2);border-radius:var(--r-sm);font-family:'DM Sans',sans-serif;font-size:13px;background:var(--surface);color:var(--text);margin-bottom:12px;outline:none;}
+.modal-btns{display:flex;gap:8px;justify-content:flex-end;}
+.drop-zone{border:1.5px dashed var(--border2);border-radius:var(--r-md);padding:24px;text-align:center;cursor:pointer;transition:all .15s;margin-bottom:12px;}
+.drop-zone:hover,.drop-zone.drag{border-color:var(--coppel-navy);background:#E8EBF5;}
+.drop-zone p{font-size:13px;color:var(--text2);}
+.drop-zone small{font-size:11px;color:var(--text3);}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<aside class="sidebar">
+  <div class="sb-head">
+    <div class="sb-topbar"></div>
+    <div class="sb-brand">
+      <span class="sb-logo-dashes">---</span><span class="sb-logo-text">Coppel</span>
+      <div class="sb-divider"></div>
+      <span class="sb-lace">LACE<br>Tracker</span>
+    </div>
+    <div class="sb-subtitle">Seguimiento de Value Streams</div>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">Value Streams</div>
+    <div id="vs-nav"></div>
+  </div>
+  <div class="sb-foot">
+    <span class="dot"></span>Auto-guardado activo<br><br>
+    <strong>Importar Sheet:</strong> descarga el Excel de cada VS y usa el botón "Importar Sheet".<br><br>
+    <strong>Guardar .json</strong> para respaldar todo.
+  </div>
+</aside>
+
+<main class="main">
+  <div class="mhead">
+    <div class="eyebrow" id="eyebrow">—</div>
+    <div class="mtitle">Seguimiento de actividades críticas</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn ac" id="tc" onclick="switchTab('cert')">Certificación</button>
+    <button class="tab-btn"    id="th" onclick="switchTab('hab')">Habilitación</button>
+    <button class="tab-btn"    id="tx" onclick="switchTab('comp')">Vista comparativa</button>
+  </div>
+
+  <!-- Panel Certificación -->
+  <div class="panel v" id="pc">
+    <div class="banner" style="background:#E8EBF5;color:var(--coppel-navy);">
+      <strong>Cómo se calcula — Certificación</strong>
+      Promedio ponderado: Terminado=100% · En Revisión=85% · Req. actualización=70% · En Proceso=50% · Bloqueado/No iniciado=0%. Peso doble = cuenta el doble. Los estados en azul fueron importados del Sheet. Puedes sobreescribirlos con tu propio criterio.
+    </div>
+    <div class="import-banner" onclick="openImport()">
+      <div class="import-icon">📥</div>
+      <div class="import-txt">
+        <strong>Importar Sheet de este VS</strong>
+        <span>Descarga el Excel del VS desde Google Sheets y súbelo aquí. Se leerán automáticamente los estados de Habilitación y Certificación.</span>
+        <span class="import-stamp" id="imp-stamp-cert"></span>
+      </div>
+    </div>
+    <div class="mgrid" id="mc"></div>
+    <div class="atbl">
+      <div class="atbl-head"><span>Actividad crítica</span><span>Estado</span><span style="text-align:right">Avance</span></div>
+      <div id="lc"></div>
+    </div>
+    <div class="lgrid" id="lgc"></div>
+  </div>
+
+  <!-- Panel Habilitación -->
+  <div class="panel" id="ph">
+    <div class="banner" style="background:var(--teal-bg);color:var(--teal-text);">
+      <strong>Cómo se calcula — Habilitación</strong>
+      Promedio ponderado: Terminado=100% · En Revisión=85% · Req. actualización=70% · En Proceso=50% · Bloqueado/No iniciado=0%. Peso doble = cuenta el doble. Los estados en azul fueron importados del Sheet. Puedes sobreescribirlos con tu propio criterio.
+    </div>
+    <div class="import-banner" onclick="openImport()">
+      <div class="import-icon">📥</div>
+      <div class="import-txt">
+        <strong>Importar Sheet de este VS</strong>
+        <span>Descarga el Excel del VS desde Google Sheets y súbelo aquí.</span>
+        <span class="import-stamp" id="imp-stamp-hab"></span>
+      </div>
+    </div>
+    <div class="mgrid" id="mh"></div>
+    <div class="atbl">
+      <div class="atbl-head"><span>Actividad crítica</span><span>Estado</span><span style="text-align:right">Avance</span></div>
+      <div id="lh"></div>
+    </div>
+    <div class="lgrid" id="lgh"></div>
+  </div>
+
+  <!-- Panel Comparativo -->
+  <div class="panel" id="px">
+    <div class="banner" style="background:var(--surface2);color:var(--text2);border:0.5px solid var(--border2);">
+      <strong>Vista comparativa — todos los Value Streams</strong>
+      Los porcentajes reflejan los estados definidos. Clic en una fila para ir a ese VS. Verde ≥80% · Amarillo ≥40% · Rojo &lt;40%. El ícono 📥 indica que ese VS tiene datos importados del Sheet.
+    </div>
+    <div class="ctbl">
+      <div class="chead"><span>Value Stream</span><span>Certificación</span><span></span><span>Habilitación</span><span></span></div>
+      <div id="cl"></div>
+    </div>
+    <div id="exparea"><textarea id="exptxt" readonly></textarea></div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bbar">
+    <div class="bbar-title">Gestión de datos</div>
+    <div class="brow">
+      <button class="abtn b" onclick="openImport()">📥 Importar Sheet (.xlsx / .csv)</button>
+      <button class="abtn g" onclick="guardarJSON()">↓ Guardar datos (.json)</button>
+      <button class="abtn" onclick="document.getElementById('fi').click()">↑ Cargar datos (.json)</button>
+      <input type="file" id="fi" accept=".json" style="display:none" onchange="cargarJSON(event)">
+      <button class="abtn" onclick="exportResumen()">Exportar resumen como texto</button>
+      <button class="abtn r" onclick="clearAll()">Borrar todos los datos</button>
+    </div>
+    <div class="bhint"><span class="dot"></span>Auto-guardado en este navegador. Para otro equipo: <strong>Guardar .json</strong> → copia el archivo → <strong>Cargar .json</strong>.</div>
+    <div id="toast"></div>
+  </div>
+</main>
+</div>
+
+<!-- Import Modal -->
+<div class="modal-bg" id="modal-bg" onclick="closeImportIfBg(event)">
+  <div class="modal">
+    <h3>Importar Sheet de un Value Stream</h3>
+    <p>Descarga el Excel del VS desde Google Sheets (<strong>Archivo → Descargar → Microsoft Excel (.xlsx)</strong>) y selecciónalo aquí. El sistema leerá automáticamente las pestañas de Habilitación y Checklists.</p>
+
+    <div class="modal-steps">
+      <div class="modal-step"><div class="step-num">1</div><div>Abre el Google Sheet del VS en tu navegador</div></div>
+      <div class="modal-step"><div class="step-num">2</div><div>Ve a <strong>Archivo → Descargar → Microsoft Excel (.xlsx)</strong></div></div>
+      <div class="modal-step"><div class="step-num">3</div><div>Selecciona el VS al que pertenece el archivo</div></div>
+      <div class="modal-step"><div class="step-num">4</div><div>Arrastra el archivo aquí o haz clic para seleccionarlo</div></div>
+    </div>
+
+    <label style="font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px;">Value Stream de este archivo</label>
+    <select class="modal-vs-sel" id="modal-vs-sel"></select>
+
+    <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()"
+      ondragover="event.preventDefault();this.classList.add('drag')"
+      ondragleave="this.classList.remove('drag')"
+      ondrop="handleDrop(event)">
+      <p id="drop-label">Arrastra el archivo .xlsx o .csv aquí</p>
+      <small>o haz clic para seleccionarlo desde tu computadora</small>
+    </div>
+    <input type="file" id="file-input" accept=".xlsx,.csv" style="display:none" onchange="handleFileSelect(event)">
+
+    <div id="modal-result" style="display:none;padding:10px 12px;border-radius:var(--r-sm);font-size:12px;margin-bottom:12px;"></div>
+
+    <div class="modal-btns">
+      <button class="abtn" onclick="closeImport()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+const VSL=['VS Onboarding y VP','VS Tarjetas de Crédito','VS Préstamos Personales','VS Cobranza','VS Gestión de Carteras','VS Seguros','VS Captación','VS Plataformas Digitales','VS Pagos'];
+
+const CA=[
+  {n:'Diagrama de flujo de valor del VS',p:2},
+  {n:'Actividades clave y métricas (outcomes) definidas',p:2},
+  {n:'Mapa de servicios core y plataformas',p:1},
+  {n:'Mapeo de stakeholders del VS',p:2},
+  {n:'Dueños del VS definidos (negocio, TI, operación)',p:2},
+  {n:'Taxonomía de productos definida',p:2},
+  {n:'Identificación inicial de demanda y capacidades',p:1},
+  {n:'VS Operativo confirmado con dueños (Go/No Go)',p:2},
+];
+
+const HA=[
+  {n:'Topología de equipos del VS definida',p:2},
+  {n:'Staffing de personas — equipos stream-aligned',p:2},
+  {n:'Modelo de gobernanza del VS definido',p:2},
+  {n:'Eventos de escalado y sincronización definidos',p:2},
+  {n:'Herramientas habilitadas (Jira, Confluence, MIDDO)',p:2},
+  {n:'Identificación de trenes de desarrollo (ARTs)',p:1},
+  {n:'Portafolio del VS creado y confirmado',p:2},
+  {n:'Roles y responsabilidades clarificadas',p:2},
+];
+
+// Keywords to match activities from the sheet to our list
+const CA_KEYS=[
+  ['diagrama','flujo','valor'],
+  ['actividades','clave','métricas','outcomes'],
+  ['servicios','plataformas','mapa'],
+  ['stakeholders','mapeo'],
+  ['dueños','value stream'],
+  ['taxonomía','productos'],
+  ['demanda','capacidades'],
+  ['operativo','confirmado','go'],
+];
+
+const HA_KEYS=[
+  ['topología','equipos'],
+  ['staffing','stream-aligned','personas'],
+  ['gobernanza','value stream'],
+  ['escalado','sincronización','eventos'],
+  ['herramientas','jira','confluence'],
+  ['trenes','arts','desarrollo'],
+  ['portafolio','creado','confirmado'],
+  ['roles','responsabilidades'],
+];
+
+const STS=['No iniciado','En Proceso','En Revisión','Requiere actualización','Bloqueado','Terminado'];
+const SPCT={'No iniciado':0,'En Proceso':.5,'En Revisión':.85,'Requiere actualización':.7,'Bloqueado':0,'Terminado':1};
+const SCOL={'No iniciado':'#B4B2A9','En Proceso':'#EF9F27','En Revisión':'#378ADD','Requiere actualización':'#D4537E','Bloqueado':'#E24B4A','Terminado':'#639922'};
+const SPIL={'Terminado':'background:#EAF3DE;color:#27500A;','En Proceso':'background:#FAEEDA;color:#633806;','En Revisión':'background:#E6F1FB;color:#0C447C;','Requiere actualización':'background:#FBEAF0;color:#72243E;','Bloqueado':'background:#FCEBEB;color:#791F1F;','No iniciado':'background:#F1EFE8;color:#5F5E5A;'};
+
+// Normalize status strings from the sheet
+function normSt(raw){
+  if(!raw) return 'No iniciado';
+  const r=String(raw).trim().toLowerCase();
+  if(r.includes('terminado')||r.includes('completo')||r.includes('done')||r==='1'||r==='100%') return 'Terminado';
+  if(r.includes('revisión')||r.includes('revision')||r.includes('review')) return 'En Revisión';
+  if(r.includes('actualización')||r.includes('actualizacion')||r.includes('actualizar')) return 'Requiere actualización';
+  if(r.includes('proceso')||r.includes('progress')||r.includes('en curso')) return 'En Proceso';
+  if(r.includes('bloqueado')||r.includes('blocked')) return 'Bloqueado';
+  if(r==='0'||r==='0%'||r.includes('no inici')) return 'No iniciado';
+  // Try avance number
+  const num=parseFloat(raw);
+  if(!isNaN(num)){
+    if(num>=1||num>=100) return 'Terminado';
+    if(num>=0.8||num>=80) return 'En Revisión';
+    if(num>=0.4||num>=40) return 'En Proceso';
+    if(num>0) return 'En Proceso';
+    return 'No iniciado';
+  }
+  return 'No iniciado';
+}
+
+// Match a sheet row name to one of our activity indices
+function matchAct(name, keys){
+  const n=String(name).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  for(let i=0;i<keys.length;i++){
+    const kset=keys[i];
+    const hits=kset.filter(k=>n.includes(k.normalize('NFD').replace(/[\u0300-\u036f]/g,'')));
+    if(hits.length>=1) return i;
+  }
+  return -1;
+}
+
+let cvs=0, ctab='cert';
+
+function ls(){try{return JSON.parse(localStorage.getItem('lace_v4')||'null');}catch(e){return null;}}
+function ss(s){try{localStorage.setItem('lace_v4',JSON.stringify(s));}catch(e){}}
+
+function mi(raw){
+  if(!raw) return {status:'No iniciado',nota:'',imported:false};
+  if(typeof raw==='string') return {status:raw,nota:'',imported:false};
+  return {status:raw.status||'No iniciado',nota:raw.nota||'',imported:raw.imported||false};
+}
+
+function init(){
+  const saved=ls();
+  const s={};
+  VSL.forEach((_,vi)=>{
+    s[vi]={
+      cert:CA.map((_,i)=>mi(saved&&saved[vi]?saved[vi].cert?.[i]:null)),
+      hab: HA.map((_,i)=>mi(saved&&saved[vi]?saved[vi].hab?.[i]:null)),
+      importedAt: saved&&saved[vi]?saved[vi].importedAt||null:null,
+    };
+  });
+  return s;
+}
+
+let ST=init();
+
+function calc(acts,items){
+  let tp=0,ts=0;
+  acts.forEach((a,i)=>{const p=SPCT[items[i].status]??0;tp+=a.p;ts+=p*a.p;});
+  return tp?ts/tp:0;
+}
+
+function pc(p){return p>=.8?'#639922':p>=.4?'#BA7517':'#E24B4A';}
+
+function rNav(){
+  document.getElementById('vs-nav').innerHTML=VSL.map((v,i)=>{
+    const cp=calc(CA,ST[i].cert),hp=calc(HA,ST[i].hab);
+    const avg=Math.round(((cp+hp)/2)*100);
+    const imp=ST[i].importedAt?' 📥':'';
+    return `<button class="vs-btn${i===cvs?' active':''}" onclick="selVS(${i})">
+      ${v}${imp}<span class="vp" style="color:${pc((cp+hp)/2)}">${avg}%</span>
+    </button>`;
+  }).join('');
+}
+
+function rMet(type){
+  const acts=type==='cert'?CA:HA;
+  const items=ST[cvs][type==='cert'?'cert':'hab'];
+  const av=calc(acts,items);
+  const done=items.filter(x=>x.status==='Terminado').length;
+  const inp=items.filter(x=>['En Proceso','En Revisión','Requiere actualización'].includes(x.status)).length;
+  const non=items.filter(x=>x.status==='No iniciado'||x.status==='Bloqueado').length;
+  const col=type==='cert'?'var(--coppel-navy)':'var(--teal)';
+  document.getElementById(type==='cert'?'mc':'mh').innerHTML=`
+    <div class="mcard"><div class="mnum" style="color:${col}">${Math.round(av*100)}%</div><div class="mlbl">Avance total (ponderado)</div></div>
+    <div class="mcard"><div class="mnum" style="color:var(--green)">${done}</div><div class="mlbl">Terminadas</div></div>
+    <div class="mcard"><div class="mnum" style="color:var(--amber)">${inp}</div><div class="mlbl">En progreso</div></div>
+    <div class="mcard"><div class="mnum" style="color:var(--text3)">${non}</div><div class="mlbl">Sin iniciar / bloqueadas</div></div>`;
+}
+
+function autoH(el){el.style.height='auto';el.style.height=el.scrollHeight+'px';}
+
+function updateStamps(){
+  ['cert','hab'].forEach(t=>{
+    const el=document.getElementById('imp-stamp-'+t);
+    if(!el) return;
+    const ia=ST[cvs].importedAt;
+    el.textContent=ia?'Última importación: '+new Date(ia).toLocaleString('es-MX'):'Sin datos importados — los estados son manuales';
+  });
+}
+
+function rList(type){
+  const acts=type==='cert'?CA:HA;
+  const items=ST[cvs][type==='cert'?'cert':'hab'];
+  const lid=type==='cert'?'lc':'lh';
+  const lgid=type==='cert'?'lgc':'lgh';
+  document.getElementById(lid).innerHTML=acts.map((a,i)=>{
+    const it=items[i];
+    const pct=Math.round((SPCT[it.status]??0)*100);
+    const bc=SCOL[it.status]||'#B4B2A9';
+    const pill=SPIL[it.status]||'';
+    const hn=it.nota&&it.nota.trim().length>0;
+    const esc=(it.nota||'').replace(/"/g,'&quot;').replace(/\n/g,'&#10;');
+    const impBadge=it.imported?'<span class="abadge-imp">importado del sheet</span>':'';
+    return `<div class="arow">
+      <div class="arow-top">
+        <div>
+          <div class="aname">${a.n}</div>
+          <span class="abadge">actividad crítica${a.p===2?' · peso doble':''}</span>${impBadge}
+          <div class="bwrap"><div class="bfill" style="width:${pct}%;background:${bc}"></div></div>
+        </div>
+        <div>
+          <select class="ssel${it.imported?' imported':''}" onchange="setSt('${type}',${i},this.value)">
+            ${STS.map(s=>`<option value="${s}"${it.status===s?' selected':''}>${s}</option>`).join('')}
+          </select>
+        </div>
+        <div class="pcol">
+          <div class="pnum">${pct}%</div>
+          <div class="spill" style="${pill}">${it.status}</div>
+        </div>
+      </div>
+      <div class="nrow">
+        <span class="nlabel">Obs.</span>
+        <textarea class="ninput${hn?' hn':''}" rows="1"
+          placeholder="Tu observación (no afecta el cálculo)..."
+          onchange="setNota('${type}',${i},this.value)"
+          oninput="autoH(this)">${esc}</textarea>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById(lgid).innerHTML=Object.entries(SCOL).map(([s,c])=>
+    `<div class="litem"><div class="ldot" style="background:${c}"></div><span>${s} = ${Math.round((SPCT[s]||0)*100)}%</span></div>`
+  ).join('');
+  document.getElementById(lid).querySelectorAll('.ninput').forEach(autoH);
+}
+
+function rComp(){
+  document.getElementById('cl').innerHTML=VSL.map((v,vi)=>{
+    const cp=calc(CA,ST[vi].cert),hp=calc(HA,ST[vi].hab);
+    const cpct=Math.round(cp*100),hpct=Math.round(hp*100);
+    const impLabel=ST[vi].importedAt?'<span class="cimp">📥 importado</span>':'';
+    return `<div class="crow${vi===cvs?' ca':''}" onclick="selVS(${vi});switchTab('cert')">
+      <span class="cvn">${v}${impLabel}</span>
+      <div><div class="bwrap"><div class="bfill" style="width:${cpct}%;background:var(--coppel-navy)"></div></div></div>
+      <span class="cpct" style="color:${pc(cp)}">${cpct}%</span>
+      <div><div class="bwrap"><div class="bfill" style="width:${hpct}%;background:var(--teal)"></div></div></div>
+      <span class="cpct" style="color:${pc(hp)}">${hpct}%</span>
+    </div>`;
+  }).join('');
+}
+
+function render(){
+  document.getElementById('eyebrow').textContent=VSL[cvs];
+  rNav();rMet('cert');rList('cert');rMet('hab');rList('hab');rComp();updateStamps();
+}
+
+function selVS(i){cvs=i;render();}
+
+function switchTab(tab){
+  ctab=tab;
+  const map={cert:{p:'pc',t:'tc',cls:'ac'},hab:{p:'ph',t:'th',cls:'ah'},comp:{p:'px',t:'tx',cls:'ax'}};
+  Object.entries(map).forEach(([k,v])=>{
+    document.getElementById(v.p).className='panel'+(k===tab?' v':'');
+    const btn=document.getElementById(v.t);
+    btn.className='tab-btn'+(k===tab?' '+v.cls:'');
+  });
+}
+
+function setSt(type,idx,val){
+  const key=type==='cert'?'cert':'hab';
+  ST[cvs][key][idx].status=val;
+  ST[cvs][key][idx].imported=false;
+  ss(ST);rMet(type);rList(type);rComp();rNav();
+}
+
+function setNota(type,idx,val){
+  const key=type==='cert'?'cert':'hab';
+  ST[cvs][key][idx].nota=val;
+  ss(ST);
+  const inputs=document.querySelectorAll(`#${type==='cert'?'lc':'lh'} .ninput`);
+  if(inputs[idx]) inputs[idx].classList.toggle('hn',val.trim().length>0);
+}
+
+// ── Import modal ──────────────────────────────────────────────
+function openImport(){
+  const sel=document.getElementById('modal-vs-sel');
+  sel.innerHTML=VSL.map((v,i)=>`<option value="${i}"${i===cvs?' selected':''}>${v}</option>`).join('');
+  document.getElementById('modal-result').style.display='none';
+  document.getElementById('drop-label').textContent='Arrastra el archivo .xlsx o .csv aquí';
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+function closeImport(){document.getElementById('modal-bg').classList.remove('open');}
+function closeImportIfBg(e){if(e.target===document.getElementById('modal-bg')) closeImport();}
+
+function handleDrop(e){
+  e.preventDefault();
+  document.getElementById('drop-zone').classList.remove('drag');
+  const f=e.dataTransfer.files[0];
+  if(f) processFile(f);
+}
+
+function handleFileSelect(e){
+  const f=e.target.files[0];
+  if(f) processFile(f);
+  e.target.value='';
+}
+
+function processFile(file){
+  const vsIdx=parseInt(document.getElementById('modal-vs-sel').value);
+  const res=document.getElementById('modal-result');
+  document.getElementById('drop-label').textContent='📄 '+file.name;
+
+  const reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      let certMatches=0, habMatches=0;
+      const data=new Uint8Array(e.target.result);
+      const wb=XLSX.read(data,{type:'array'});
+
+      // Try to read each sheet
+      wb.SheetNames.forEach(sname=>{
+        const ws=wb.Sheets[sname];
+        const rows=XLSX.utils.sheet_to_json(ws,{defval:''});
+        if(!rows.length) return;
+
+        // Detect sheet type by column names
+        const cols=Object.keys(rows[0]).map(c=>c.toLowerCase());
+        const isHab=sname.toLowerCase().includes('habilitaci') ||
+          cols.some(c=>c.includes('actividad crítica')||c.includes('actividad critica'));
+        const isChecklist=sname.toLowerCase().includes('checklist') ||
+          cols.some(c=>c.includes('elemento'));
+
+        if(isHab){
+          rows.forEach(row=>{
+            const nameCol=Object.keys(row).find(k=>k.toLowerCase().includes('actividad')||k.toLowerCase().includes('crítica'));
+            const stCol=Object.keys(row).find(k=>k.toLowerCase()==='estado');
+            const avCol=Object.keys(row).find(k=>k.toLowerCase()==='avance');
+            if(!nameCol) return;
+            const name=row[nameCol];
+            const rawSt=stCol?row[stCol]:(avCol?row[avCol]:'');
+            const st=normSt(rawSt||row[avCol]);
+            const idx=matchAct(name,HA_KEYS);
+            if(idx>=0){
+              ST[vsIdx].hab[idx].status=st;
+              ST[vsIdx].hab[idx].imported=true;
+              habMatches++;
+            }
+          });
+        }
+
+        if(isChecklist){
+          rows.forEach(row=>{
+            const nameCol=Object.keys(row).find(k=>k.toLowerCase().includes('elemento')||k.toLowerCase().includes('actividad'));
+            const stCol=Object.keys(row).find(k=>k.toLowerCase()==='estado');
+            const avCol=Object.keys(row).find(k=>k.toLowerCase()==='avance');
+            const etapaCol=Object.keys(row).find(k=>k.toLowerCase()==='etapa'||k.toLowerCase().includes('checklist'));
+            if(!nameCol) return;
+            const name=row[nameCol];
+            const etapa=etapaCol?String(row[etapaCol]).toLowerCase():'';
+            const rawSt=stCol?row[stCol]:(avCol?row[avCol]:'');
+            const st=normSt(rawSt||row[avCol]);
+            if(etapa.includes('cert')||etapa===''){
+              const idx=matchAct(name,CA_KEYS);
+              if(idx>=0){
+                ST[vsIdx].cert[idx].status=st;
+                ST[vsIdx].cert[idx].imported=true;
+                certMatches++;
+              }
+            }
+            if(etapa.includes('hab')){
+              const idx=matchAct(name,HA_KEYS);
+              if(idx>=0){
+                ST[vsIdx].hab[idx].status=st;
+                ST[vsIdx].hab[idx].imported=true;
+                habMatches++;
+              }
+            }
+          });
+        }
+      });
+
+      const total=certMatches+habMatches;
+      ST[vsIdx].importedAt=new Date().toISOString();
+      ss(ST);
+      if(cvs===vsIdx) render(); else rNav();
+
+      res.style.cssText=`display:block;padding:10px 12px;border-radius:6px;font-size:12px;margin-bottom:12px;background:${total>0?'var(--green-bg)':'var(--amber-bg)'};color:${total>0?'var(--green-text)':'var(--amber-text)'};`;
+      res.innerHTML=total>0
+        ?`<strong>Importado correctamente para ${VSL[vsIdx]}</strong><br>Certificación: ${certMatches} actividades leídas · Habilitación: ${habMatches} actividades leídas.<br><small>Los estados están marcados en azul. Puedes sobreescribirlos con tu criterio.</small>`
+        :`<strong>Archivo leído pero no se encontraron actividades reconocidas.</strong><br>Verifica que el archivo sea el Excel correcto del VS. El sistema busca en las pestañas "Habilitación" y "Checklists".`;
+
+      setTimeout(()=>closeImport(),total>0?2500:0);
+    }catch(err){
+      res.style.cssText='display:block;padding:10px 12px;border-radius:6px;font-size:12px;margin-bottom:12px;background:var(--red-bg);color:var(--red-text);';
+      res.textContent='Error al leer el archivo: '+err.message;
+    }
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+// ── Save / Load JSON ──────────────────────────────────────────
+function clearAll(){
+  if(!confirm('¿Seguro que quieres borrar todos los datos?\nEsta acción no se puede deshacer.')) return;
+  localStorage.removeItem('lace_v4');ST=init();render();
+}
+
+function guardarJSON(){
+  const blob=new Blob([JSON.stringify({version:'lace_v4',fecha:new Date().toISOString(),state:ST},null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`LACE_datos_${new Date().toLocaleDateString('es-MX').replace(/\//g,'-')}.json`;
+  a.click();
+}
+
+function cargarJSON(ev){
+  const file=ev.target.files[0];if(!file)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const t=document.getElementById('toast');
+    try{
+      const p=JSON.parse(e.target.result);
+      if(!p.state) throw 0;
+      VSL.forEach((_,vi)=>{
+        if(p.state[vi]) ST[vi]={
+          cert:CA.map((_,i)=>mi(p.state[vi].cert?.[i])),
+          hab: HA.map((_,i)=>mi(p.state[vi].hab?.[i])),
+          importedAt:p.state[vi].importedAt||null,
+        };
+      });
+      ss(ST);render();
+      t.style.cssText='display:block;margin-top:10px;padding:8px 12px;border-radius:6px;font-size:12px;background:var(--green-bg);color:var(--green-text);';
+      t.textContent='Datos cargados correctamente desde '+file.name;
+    }catch{
+      t.style.cssText='display:block;margin-top:10px;padding:8px 12px;border-radius:6px;font-size:12px;background:var(--red-bg);color:var(--red-text);';
+      t.textContent='Error al leer el archivo.';
+    }
+    setTimeout(()=>t.style.display='none',4000);
+    ev.target.value='';
+  };
+  r.readAsText(file);
+}
+
+function exportResumen(){
+  const area=document.getElementById('exparea');
+  const lines=['LACE · RESUMEN DE AVANCES','='.repeat(52),`Generado: ${new Date().toLocaleString('es-MX')}`,''];
+  VSL.forEach((v,vi)=>{
+    const cp=Math.round(calc(CA,ST[vi].cert)*100);
+    const hp=Math.round(calc(HA,ST[vi].hab)*100);
+    const imp=ST[vi].importedAt?` [importado ${new Date(ST[vi].importedAt).toLocaleDateString('es-MX')}]`:'';
+    lines.push(v+imp,`  Certificación: ${cp}%  |  Habilitación: ${hp}%`,'  — Certificación:');
+    CA.forEach((a,i)=>{
+      const it=ST[vi].cert[i];
+      lines.push(`     · ${a.n}: ${it.status}${it.imported?' [del sheet]':''}`);
+      if(it.nota&&it.nota.trim()) lines.push(`       Obs: ${it.nota.trim()}`);
+    });
+    lines.push('  — Habilitación:');
+    HA.forEach((a,i)=>{
+      const it=ST[vi].hab[i];
+      lines.push(`     · ${a.n}: ${it.status}${it.imported?' [del sheet]':''}`);
+      if(it.nota&&it.nota.trim()) lines.push(`       Obs: ${it.nota.trim()}`);
+    });
+    lines.push('');
+  });
+  document.getElementById('exptxt').value=lines.join('\n');
+  area.style.display=area.style.display==='none'?'block':'none';
+  if(ctab!=='comp') switchTab('comp');
+}
+
+render();
+</script>
+</body>
+</html>
