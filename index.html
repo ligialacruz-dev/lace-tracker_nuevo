@@ -27,7 +27,7 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.5;}
 .shell{display:flex;min-height:100vh;}
- 
+
 /* ── SIDEBAR ── */
 .sidebar{width:240px;min-width:240px;background:var(--cop-blue);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;}
 .sb-topbar{height:5px;background:var(--cop-yellow);}
@@ -51,7 +51,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .sb-foot{margin-top:auto;padding:14px 18px;border-top:1px solid rgba(255,255,255,0.08);font-size:11px;color:rgba(255,255,255,0.35);line-height:1.7;}
 .sb-foot strong{color:rgba(255,255,255,0.6);}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--cop-yellow);display:inline-block;margin-right:5px;vertical-align:middle;}
- 
+
 /* ── TOPBAR ── */
 .topbar{background:var(--cop-blue-dark);padding:10px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--cop-yellow);}
 .topbar-left{display:flex;flex-direction:column;}
@@ -60,11 +60,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .topbar-right{display:flex;gap:8px;align-items:center;}
 .report-btn{padding:8px 16px;background:var(--cop-yellow);color:var(--cop-blue-dark);border:none;border-radius:var(--r-sm);font-family:'Inter',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;}
 .report-btn:hover{background:var(--cop-yellow-dark);transform:translateY(-1px);}
- 
+
 /* ── MAIN ── */
 .main{flex:1;display:flex;flex-direction:column;max-width:calc(100% - 240px);overflow-x:hidden;}
 .content{padding:24px 32px;flex:1;}
- 
+
 /* ── TABS ── */
 .tabs{display:flex;gap:4px;margin-bottom:22px;background:var(--surface);border-radius:var(--r-lg);padding:4px;border:0.5px solid var(--border2);width:fit-content;}
 .tab-btn{background:none;border:none;padding:7px 18px;border-radius:var(--r-md);font-family:'Inter',sans-serif;font-size:13px;color:var(--text2);cursor:pointer;transition:all .15s;font-weight:400;}
@@ -72,7 +72,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .tab-btn.ac{background:var(--cop-blue);color:#FFF;font-weight:600;box-shadow:0 2px 8px rgba(26,63,203,0.25);}
 .tab-btn.ah{background:var(--teal);color:#FFF;font-weight:600;box-shadow:0 2px 8px rgba(13,122,95,0.25);}
 .tab-btn.ax{background:var(--text);color:#FFF;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,0.15);}
- 
+
 /* ── METRICS ── */
 .mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px;}
 .mcard{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--r-lg);padding:16px 18px;position:relative;overflow:hidden;}
@@ -83,13 +83,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .mcard.mc-none::before{background:var(--st-none);}
 .mnum{font-size:28px;font-weight:300;font-family:'DM Mono',monospace;line-height:1;margin-top:6px;}
 .mlbl{font-size:11px;color:var(--text3);margin-top:5px;font-weight:500;}
- 
+
 /* ── BANNER ── */
 .banner{border-radius:var(--r-md);padding:10px 14px;margin-bottom:16px;font-size:12px;line-height:1.6;border-left:3px solid;}
 .banner strong{font-weight:600;display:block;margin-bottom:2px;}
 .banner-cert{background:var(--cop-blue-light);color:var(--cop-blue-dark);border-color:var(--cop-blue);}
 .banner-hab{background:var(--teal-bg);color:var(--teal-text);border-color:var(--teal);}
- 
+
 /* ── IMPORT BANNER ── */
 .import-banner{background:var(--surface);border:1.5px dashed var(--border2);border-radius:var(--r-lg);padding:16px 20px;margin-bottom:18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .15s;}
 .import-banner:hover{border-color:var(--cop-blue);background:var(--cop-blue-light);}
@@ -97,7 +97,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .import-txt strong{font-size:13px;font-weight:600;color:var(--text);display:block;}
 .import-txt span{font-size:11px;color:var(--text2);}
 .import-stamp{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);margin-top:4px;display:block;}
- 
+
 /* ── ACTIVITY TABLE ── */
 .atbl{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
 .atbl-head{display:grid;grid-template-columns:1fr 175px 95px;gap:12px;padding:10px 18px;background:var(--surface2);border-bottom:0.5px solid var(--border2);font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;}
@@ -123,12 +123,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .ninput:focus{border-color:var(--border2);background:var(--surface);}
 .ninput::placeholder{color:var(--text3);}
 .ninput.hn{background:#FEFDF5;border-color:rgba(196,155,0,.25);}
- 
+
 /* ── LEGEND ── */
 .lgrid{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
 .litem{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);background:var(--surface);padding:4px 10px;border-radius:20px;border:0.5px solid var(--border);}
 .ldot{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
- 
+
 /* ── COMPARATIVE ── */
 .ctbl{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
 .chead{display:grid;grid-template-columns:210px 1fr 65px 1fr 65px;gap:10px;padding:10px 18px;background:var(--surface2);border-bottom:0.5px solid var(--border2);font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;align-items:center;}
@@ -140,7 +140,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .crow.ca .cvn{font-weight:600;color:var(--cop-blue);}
 .cpct{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;text-align:right;}
 .cimp{font-size:9px;color:var(--st-rev);font-family:'DM Mono',monospace;display:block;margin-top:1px;}
- 
+
 /* ── BOTTOM BAR ── */
 .bbar{background:var(--surface);border-top:0.5px solid var(--border2);padding:14px 32px;}
 .bbar-title{font-size:11px;font-weight:600;color:var(--text2);margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em;}
@@ -155,7 +155,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 #exparea{display:none;margin-top:12px;}
 #exparea textarea{width:100%;height:160px;font-family:'DM Mono',monospace;font-size:11px;padding:10px;border:0.5px solid var(--border2);border-radius:var(--r-sm);background:var(--surface);color:var(--text);resize:vertical;outline:none;}
 .panel{display:none;}.panel.v{display:block;}
- 
+
 /* ── MODAL ── */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(10,15,40,0.5);z-index:100;align-items:center;justify-content:center;backdrop-filter:blur(2px);}
 .modal-bg.open{display:flex;}
@@ -172,7 +172,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .drop-zone:hover,.drop-zone.drag{border-color:var(--cop-blue);background:var(--cop-blue-light);}
 .drop-zone p{font-size:13px;color:var(--text2);font-weight:500;}
 .drop-zone small{font-size:11px;color:var(--text3);}
- 
+
 /* ── REPORT MODAL ── */
 .rmodal-bg{display:none;position:fixed;inset:0;background:rgba(10,15,40,0.6);z-index:200;overflow-y:auto;padding:30px 20px;backdrop-filter:blur(3px);}
 .rmodal-bg.open{display:block;}
@@ -222,7 +222,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 </head>
 <body>
 <div class="shell">
- 
+
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sb-topbar"></div>
@@ -251,10 +251,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     <strong>Guardar .json</strong> para respaldar tus datos.
   </div>
 </aside>
- 
+
 <!-- MAIN -->
 <div class="main">
- 
+
   <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar-left">
@@ -262,10 +262,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
       <span class="topbar-title" id="topbar-vs">Seguimiento de Value Streams</span>
     </div>
     <div class="topbar-right">
-      <button class="report-btn" onclick="openReport()">📊 Generar reporte</button>
+      <button class="report-btn" style="background:rgba(255,255,255,0.15);color:#FFF;border:1px solid rgba(255,255,255,0.3);" onclick="generarReporteCompartir()">📤 Compartir reporte</button>
+      <button class="report-btn" onclick="openReport()">📊 Ver reporte</button>
     </div>
   </div>
- 
+
   <!-- CONTENT -->
   <div class="content">
     <div class="tabs">
@@ -273,7 +274,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
       <button class="tab-btn" id="th" onclick="switchTab('hab')">Habilitación</button>
       <button class="tab-btn" id="tx" onclick="switchTab('comp')">Vista comparativa</button>
     </div>
- 
+
     <!-- Panel Certificación -->
     <div class="panel v" id="pc">
       <div class="banner banner-cert">
@@ -295,7 +296,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
       </div>
       <div class="lgrid" id="lgc"></div>
     </div>
- 
+
     <!-- Panel Habilitación -->
     <div class="panel" id="ph">
       <div class="banner banner-hab">
@@ -317,7 +318,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
       </div>
       <div class="lgrid" id="lgh"></div>
     </div>
- 
+
     <!-- Panel Comparativo -->
     <div class="panel" id="px">
       <div class="banner" style="background:var(--surface2);color:var(--text2);border-left:3px solid var(--border2);">
@@ -331,7 +332,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
       <div id="exparea"><textarea id="exptxt" readonly></textarea></div>
     </div>
   </div>
- 
+
   <!-- BOTTOM BAR -->
   <div class="bbar">
     <div class="bbar-title">Gestión de datos</div>
@@ -348,7 +349,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
   </div>
 </div>
 </div>
- 
+
 <!-- IMPORT MODAL -->
 <div class="modal-bg" id="modal-bg" onclick="closeImportIfBg(event)">
   <div class="modal">
@@ -376,7 +377,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     </div>
   </div>
 </div>
- 
+
 <!-- REPORT MODAL -->
 <div class="rmodal-bg" id="rmodal-bg">
   <div class="rmodal">
@@ -412,11 +413,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     </div>
   </div>
 </div>
- 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 const VSL=['VS Onboarding y VP','VS Tarjetas de Crédito','VS Préstamos Personales','VS Cobranza','VS Gestión de Carteras','VS Seguros','VS Captación','VS Plataformas Digitales','VS Pagos'];
- 
+
 const CA=[
   {n:'Propósito del Value Stream',d:'Roles involucrados y razón de ser del VS definidos.',p:1},
   {n:'Definición del Flujo del Value Stream',d:'Etapas, disparadores, valor, propósito, alcance, dependencias e identificación de etapas.',p:1},
@@ -427,7 +428,7 @@ const CA=[
   {n:'Confirmación de KPIs de Negocio',d:'Métricas de impacto al negocio y métricas de flujo socializadas.',p:1},
   {n:'One Page Firmado',d:'One Page firmado por los directores con la información requerida.',p:1},
 ];
- 
+
 const HA=[
   {n:'Topología de Equipos del VS',d:'Mapa de topología de equipos (MIRO / Slides).',p:1},
   {n:'Staffing de Personas — Equipos Stream-Aligned',d:'Lista AS IS asignados + roles faltantes + dedicación (FT/PT) + jefe de línea directa.',p:1},
@@ -438,39 +439,39 @@ const HA=[
   {n:'Portafolio del VS Creado y Confirmado',d:'Portafolio configurado en Jira con métricas de negocio declaradas.',p:1},
   {n:'Roles y Responsabilidades Clarificadas',d:'Matriz RACI actualizada + Publicación en Confluence del VS.',p:1},
 ];
- 
+
 const CA_KEYS=[['propósito','value stream','razón'],['definición','flujo','etapas'],['información','etapas','ficha','técnica'],['mapa','tecnologías','sistemas'],['inventario','equipos','staffing'],['taxonomía','portafolio','soluciones'],['kpis','negocio','métricas','confirmación'],['one page','firmado','directores']];
 const HA_KEYS=[['topología','equipos'],['staffing','stream-aligned','personas'],['gobernanza','value stream'],['escalado','sincronización','eventos'],['herramientas','jira','confluence'],['trenes','arts','desarrollo'],['portafolio','creado','confirmado'],['roles','responsabilidades']];
- 
+
 const STS=['No iniciado','En Proceso','En Revisión','Requiere actualización','Bloqueado','Terminado'];
 const SPCT={'No iniciado':0,'En Proceso':.5,'En Revisión':.85,'Requiere actualización':.7,'Bloqueado':0,'Terminado':1};
 const SCOL={'No iniciado':'#9CA3AF','En Proceso':'#D97706','En Revisión':'#2563EB','Requiere actualización':'#DC2626','Bloqueado':'#7C3AED','Terminado':'#16A34A'};
 const SPIL={'Terminado':'background:#DCFCE7;color:#166534;','En Proceso':'background:#FEF3C7;color:#92400E;','En Revisión':'background:#DBEAFE;color:#1E40AF;','Requiere actualización':'background:#FEE2E2;color:#991B1B;','Bloqueado':'background:#EDE9FE;color:#5B21B6;','No iniciado':'background:#F3F4F6;color:#374151;'};
- 
+
 let cvs=0,ctab='cert';
- 
+
 function ls(){try{return JSON.parse(localStorage.getItem('lace_v4')||'null');}catch(e){return null;}}
 function ss(s){try{localStorage.setItem('lace_v4',JSON.stringify(s));}catch(e){}}
 function mi(raw){if(!raw)return{status:'No iniciado',nota:'',imported:false};if(typeof raw==='string')return{status:raw,nota:'',imported:false};return{status:raw.status||'No iniciado',nota:raw.nota||'',imported:raw.imported||false};}
- 
+
 function init(){
   const saved=ls();const s={};
   VSL.forEach((_,vi)=>{s[vi]={cert:CA.map((_,i)=>mi(saved&&saved[vi]?saved[vi].cert?.[i]:null)),hab:HA.map((_,i)=>mi(saved&&saved[vi]?saved[vi].hab?.[i]:null)),importedAt:saved&&saved[vi]?saved[vi].importedAt||null:null};});
   return s;
 }
 let ST=init();
- 
+
 function calc(acts,items){let tp=0,ts=0;acts.forEach((a,i)=>{const p=SPCT[items[i].status]??0;tp+=a.p;ts+=p*a.p;});return tp?ts/tp:0;}
 function pc(p){return p>=.8?'#16A34A':p>=.4?'#D97706':'#DC2626';}
 function autoH(el){el.style.height='auto';el.style.height=el.scrollHeight+'px';}
- 
+
 function rNav(){
   document.getElementById('vs-nav').innerHTML=VSL.map((v,i)=>{
     const cp=calc(CA,ST[i].cert),hp=calc(HA,ST[i].hab),avg=Math.round(((cp+hp)/2)*100);
     return `<button class="vs-btn${i===cvs?' active':''}" onclick="selVS(${i})">${v}${ST[i].importedAt?' 📥':''}<span class="vp" style="color:${pc((cp+hp)/2)}">${avg}%</span></button>`;
   }).join('');
 }
- 
+
 function rMet(type){
   const acts=type==='cert'?CA:HA,items=ST[cvs][type==='cert'?'cert':'hab'];
   const av=calc(acts,items),done=items.filter(x=>x.status==='Terminado').length,inp=items.filter(x=>['En Proceso','En Revisión','Requiere actualización'].includes(x.status)).length,non=items.filter(x=>x.status==='No iniciado'||x.status==='Bloqueado').length;
@@ -481,7 +482,7 @@ function rMet(type){
     <div class="mcard mc-prog"><div class="mlbl">En progreso</div><div class="mnum" style="color:var(--st-proc)">${inp}</div></div>
     <div class="mcard mc-none"><div class="mlbl">Sin iniciar / bloqueadas</div><div class="mnum" style="color:var(--st-none)">${non}</div></div>`;
 }
- 
+
 function rList(type){
   const acts=type==='cert'?CA:HA,items=ST[cvs][type==='cert'?'cert':'hab'],lid=type==='cert'?'lc':'lh',lgid=type==='cert'?'lgc':'lgh';
   document.getElementById(lid).innerHTML=acts.map((a,i)=>{
@@ -495,7 +496,7 @@ function rList(type){
   document.getElementById(lgid).innerHTML=Object.entries(SCOL).map(([s,c])=>`<div class="litem"><div class="ldot" style="background:${c}"></div><span>${s} = ${Math.round((SPCT[s]||0)*100)}%</span></div>`).join('');
   document.getElementById(lid).querySelectorAll('.ninput').forEach(autoH);
 }
- 
+
 function rComp(){
   document.getElementById('cl').innerHTML=VSL.map((v,vi)=>{
     const cp=calc(CA,ST[vi].cert),hp=calc(HA,ST[vi].hab),cpct=Math.round(cp*100),hpct=Math.round(hp*100);
@@ -508,16 +509,16 @@ function rComp(){
     </div>`;
   }).join('');
 }
- 
+
 function updateStamps(){
   ['cert','hab'].forEach(t=>{const el=document.getElementById('imp-stamp-'+t);if(!el)return;const ia=ST[cvs].importedAt;el.textContent=ia?'Última importación: '+new Date(ia).toLocaleString('es-MX'):'Sin datos importados — estados manuales';});
 }
- 
+
 function render(){
   document.getElementById('topbar-vs').textContent=VSL[cvs];
   rNav();rMet('cert');rList('cert');rMet('hab');rList('hab');rComp();updateStamps();
 }
- 
+
 function selVS(i){cvs=i;render();}
 function switchTab(tab){
   ctab=tab;
@@ -526,7 +527,7 @@ function switchTab(tab){
 }
 function setSt(type,idx,val){const key=type==='cert'?'cert':'hab';ST[cvs][key][idx].status=val;ST[cvs][key][idx].imported=false;ss(ST);rMet(type);rList(type);rComp();rNav();}
 function setNota(type,idx,val){const key=type==='cert'?'cert':'hab';ST[cvs][key][idx].nota=val;ss(ST);const inputs=document.querySelectorAll(`#${type==='cert'?'lc':'lh'} .ninput`);if(inputs[idx])inputs[idx].classList.toggle('hn',val.trim().length>0);}
- 
+
 // ── REPORT ──────────────────────────────────────────────────
 function openReport(){
   document.getElementById('r-date').textContent='Generado: '+new Date().toLocaleString('es-MX');
@@ -535,12 +536,12 @@ function openReport(){
   const avgCert=Math.round(allCert.reduce((a,b)=>a+b,0)/VSL.length*100);
   const avgHab=Math.round(allHab.reduce((a,b)=>a+b,0)/VSL.length*100);
   const vsCompletos=VSL.filter((_,vi)=>allCert[vi]>=.8&&allHab[vi]>=.8).length;
- 
+
   document.getElementById('r-summary').innerHTML=`
     <div class="r-sum-card"><div class="r-sum-num" style="color:var(--cop-blue)">${avgCert}%</div><div class="r-sum-lbl">Promedio Certificación</div></div>
     <div class="r-sum-card"><div class="r-sum-num" style="color:var(--teal)">${avgHab}%</div><div class="r-sum-lbl">Promedio Habilitación</div></div>
     <div class="r-sum-card"><div class="r-sum-num" style="color:var(--st-done)">${vsCompletos}/${VSL.length}</div><div class="r-sum-lbl">VS con avance ≥80%</div></div>`;
- 
+
   document.getElementById('r-vs-list').innerHTML=VSL.map((v,vi)=>{
     const cp=Math.round(allCert[vi]*100),hp=Math.round(allHab[vi]*100);
     return `<div class="r-vs-row">
@@ -552,28 +553,28 @@ function openReport(){
       </div>
     </div>`;
   }).join('');
- 
+
   const attnVS=VSL.filter((_,vi)=>allCert[vi]<.4||allHab[vi]<.4);
   const attnEl=document.getElementById('r-attn'),attnList=document.getElementById('r-attn-list');
   if(attnVS.length>0){
     attnEl.style.display='block';
     attnList.innerHTML=attnVS.map(v=>`<div class="r-attn-item">${v} — avance bajo en ${VSL.indexOf(v)>=0&&allCert[VSL.indexOf(v)]<.4?'Certificación':''}${VSL.indexOf(v)>=0&&allCert[VSL.indexOf(v)]<.4&&allHab[VSL.indexOf(v)]<.4?' y ':''}${VSL.indexOf(v)>=0&&allHab[VSL.indexOf(v)]<.4?'Habilitación':''}</div>`).join('');
   } else attnEl.style.display='none';
- 
+
   document.getElementById('rmodal-bg').classList.add('open');
 }
 function closeReport(){document.getElementById('rmodal-bg').classList.remove('open');}
- 
+
 // ── IMPORT ──────────────────────────────────────────────────
 function normSt(raw){if(!raw)return'No iniciado';const r=String(raw).trim().toLowerCase();if(r.includes('terminado')||r.includes('completo')||r.includes('done')||r==='1'||r==='100%')return'Terminado';if(r.includes('revisión')||r.includes('revision')||r.includes('review'))return'En Revisión';if(r.includes('actualización')||r.includes('actualizacion')||r.includes('actualizar'))return'Requiere actualización';if(r.includes('proceso')||r.includes('progress')||r.includes('en curso'))return'En Proceso';if(r.includes('bloqueado')||r.includes('blocked'))return'Bloqueado';const num=parseFloat(raw);if(!isNaN(num)){if(num>=1||num>=100)return'Terminado';if(num>=0.8||num>=80)return'En Revisión';if(num>=0.4||num>=40)return'En Proceso';if(num>0)return'En Proceso';return'No iniciado';}return'No iniciado';}
 function matchAct(name,keys){const n=String(name).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');for(let i=0;i<keys.length;i++){const kset=keys[i];if(kset.filter(k=>n.includes(k.normalize('NFD').replace(/[\u0300-\u036f]/g,''))).length>=1)return i;}return -1;}
- 
+
 function openImport(){const sel=document.getElementById('modal-vs-sel');sel.innerHTML=VSL.map((v,i)=>`<option value="${i}"${i===cvs?' selected':''}>${v}</option>`).join('');document.getElementById('modal-result').style.display='none';document.getElementById('drop-label').textContent='Arrastra el archivo .xlsx o .csv aquí';document.getElementById('modal-bg').classList.add('open');}
 function closeImport(){document.getElementById('modal-bg').classList.remove('open');}
 function closeImportIfBg(e){if(e.target===document.getElementById('modal-bg'))closeImport();}
 function handleDrop(e){e.preventDefault();document.getElementById('drop-zone').classList.remove('drag');const f=e.dataTransfer.files[0];if(f)processFile(f);}
 function handleFileSelect(e){const f=e.target.files[0];if(f)processFile(f);e.target.value='';}
- 
+
 function processFile(file){
   const vsIdx=parseInt(document.getElementById('modal-vs-sel').value);
   const res=document.getElementById('modal-result');
@@ -600,13 +601,189 @@ function processFile(file){
   };
   reader.readAsArrayBuffer(file);
 }
- 
+
 // ── SAVE / LOAD ──────────────────────────────────────────────
 function clearAll(){if(!confirm('¿Seguro que quieres borrar todos los datos?\nEsta acción no se puede deshacer.'))return;localStorage.removeItem('lace_v4');ST=init();render();}
 function guardarJSON(){const blob=new Blob([JSON.stringify({version:'lace_v4',fecha:new Date().toISOString(),state:ST},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`LACE_datos_${new Date().toLocaleDateString('es-MX').replace(/\//g,'-')}.json`;a.click();}
 function cargarJSON(ev){const file=ev.target.files[0];if(!file)return;const r=new FileReader();r.onload=e=>{const t=document.getElementById('toast');try{const p=JSON.parse(e.target.result);if(!p.state)throw 0;VSL.forEach((_,vi)=>{if(p.state[vi])ST[vi]={cert:CA.map((_,i)=>mi(p.state[vi].cert?.[i])),hab:HA.map((_,i)=>mi(p.state[vi].hab?.[i])),importedAt:p.state[vi].importedAt||null};});ss(ST);render();t.style.cssText='display:block;margin-top:10px;padding:8px 12px;border-radius:6px;font-size:12px;font-weight:500;background:var(--st-done-bg);color:var(--st-done);';t.textContent='✅ Datos cargados correctamente desde '+file.name;}catch{t.style.cssText='display:block;margin-top:10px;padding:8px 12px;border-radius:6px;font-size:12px;font-weight:500;background:var(--st-req-bg);color:var(--st-req);';t.textContent='Error al leer el archivo.';}setTimeout(()=>t.style.display='none',4000);ev.target.value='';};r.readAsText(file);}
 function exportResumen(){const area=document.getElementById('exparea');const lines=['LACE · RESUMEN DE AVANCES','='.repeat(52),`Generado: ${new Date().toLocaleString('es-MX')}`,''];VSL.forEach((v,vi)=>{const cp=Math.round(calc(CA,ST[vi].cert)*100),hp=Math.round(calc(HA,ST[vi].hab)*100);lines.push(v,`  Certificación: ${cp}%  |  Habilitación: ${hp}%`,'  — Certificación:');CA.forEach((a,i)=>{const it=ST[vi].cert[i];lines.push(`     · ${a.n}: ${it.status}${it.imported?' [del sheet]':''}`);if(it.nota&&it.nota.trim())lines.push(`       Obs: ${it.nota.trim()}`);});lines.push('  — Habilitación:');HA.forEach((a,i)=>{const it=ST[vi].hab[i];lines.push(`     · ${a.n}: ${it.status}${it.imported?' [del sheet]':''}`);if(it.nota&&it.nota.trim())lines.push(`       Obs: ${it.nota.trim()}`);});lines.push('');});document.getElementById('exptxt').value=lines.join('\n');area.style.display=area.style.display==='none'?'block':'none';if(ctab!=='comp')switchTab('comp');}
- 
+
+
+// ── GENERAR REPORTE PARA COMPARTIR ─────────────────────────
+function generarReporteCompartir(){
+  const fecha = new Date().toLocaleString('es-MX');
+  const fechaFile = new Date().toLocaleDateString('es-MX').replace(/\//g,'-');
+
+  const SPCT_R = {'No iniciado':0,'En Proceso':.5,'En Revisión':.85,'Requiere actualización':.7,'Bloqueado':0,'Terminado':1};
+  const SCOL_R = {'No iniciado':'#9CA3AF','En Proceso':'#D97706','En Revisión':'#2563EB','Requiere actualización':'#DC2626','Bloqueado':'#7C3AED','Terminado':'#16A34A'};
+  const SPIL_R = {'Terminado':'background:#DCFCE7;color:#166534;','En Proceso':'background:#FEF3C7;color:#92400E;','En Revisión':'background:#DBEAFE;color:#1E40AF;','Requiere actualización':'background:#FEE2E2;color:#991B1B;','Bloqueado':'background:#EDE9FE;color:#5B21B6;','No iniciado':'background:#F3F4F6;color:#374151;'};
+
+  function calcR(acts,items){let tp=0,ts=0;acts.forEach((a,i)=>{tp+=a.p;ts+=(SPCT_R[items[i].status]??0)*a.p;});return tp?ts/tp:0;}
+  function pcR(p){return p>=.8?'#16A34A':p>=.4?'#D97706':'#DC2626';}
+
+  const avgCert = Math.round(VSL.reduce((_,v,vi)=>_+calcR(CA,ST[vi].cert),0)/VSL.length*100);
+  const avgHab  = Math.round(VSL.reduce((_,v,vi)=>_+calcR(HA,ST[vi].hab),0)/VSL.length*100);
+  const vsOk    = VSL.filter((_,vi)=>calcR(CA,ST[vi].cert)>=.8&&calcR(HA,ST[vi].hab)>=.8).length;
+
+  function buildVSSection(vi){
+    const v=VSL[vi];
+    const cp=calcR(CA,ST[vi].cert), hp=calcR(HA,ST[vi].hab);
+    const cpct=Math.round(cp*100), hpct=Math.round(hp*100);
+    const imp=ST[vi].importedAt?`<span style="font-size:10px;color:#2563EB;font-family:monospace;margin-left:8px;">📥 importado ${new Date(ST[vi].importedAt).toLocaleDateString('es-MX')}</span>`:'';
+
+    function actRows(acts, items, color){
+      return acts.map((a,i)=>{
+        const it=items[i];
+        const pct=Math.round((SPCT_R[it.status]??0)*100);
+        const bc=SCOL_R[it.status]||'#9CA3AF';
+        const pill=SPIL_R[it.status]||'';
+        const nota=it.nota&&it.nota.trim()?`<div style="margin-top:5px;font-size:11px;color:#6B7280;background:#FEFDF5;border-left:2px solid #F5C300;padding:4px 8px;border-radius:3px;">💬 ${it.nota.trim()}</div>`:'';
+        return `<div style="padding:10px 16px;border-bottom:0.5px solid #F3F4F6;">
+          <div style="display:grid;grid-template-columns:1fr 90px;gap:12px;align-items:start;">
+            <div>
+              <div style="font-size:12.5px;font-weight:500;color:#0F1117;">${a.n}</div>
+              <div style="font-size:10.5px;color:#9499AD;margin-top:1px;line-height:1.4;">${a.d}</div>
+              <div style="margin-top:5px;background:#F3F4F6;border-radius:3px;height:4px;"><div style="width:${pct}%;height:4px;border-radius:3px;background:${bc};"></div></div>
+              ${nota}
+            </div>
+            <div style="text-align:right;">
+              <div style="font-family:monospace;font-size:14px;font-weight:600;color:#0F1117;">${pct}%</div>
+              <div style="display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;margin-top:4px;font-weight:600;${pill}">${it.status}</div>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    return `<div style="background:#FFF;border:0.5px solid #E5E7EB;border-radius:14px;overflow:hidden;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+      <div style="background:#1A3FCB;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:14px;font-weight:700;color:#FFF;">${v}${imp}</div>
+        <div style="display:flex;gap:16px;">
+          <div style="text-align:center;"><div style="font-family:monospace;font-size:16px;font-weight:700;color:#F5C300;">${cpct}%</div><div style="font-size:9px;color:rgba(255,255,255,0.6);margin-top:1px;">CERT.</div></div>
+          <div style="text-align:center;"><div style="font-family:monospace;font-size:16px;font-weight:700;color:#5EEAD4;">${hpct}%</div><div style="font-size:9px;color:rgba(255,255,255,0.6);margin-top:1px;">HAB.</div></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+        <div style="border-right:0.5px solid #F3F4F6;">
+          <div style="padding:8px 16px;background:#E8EDFB;border-bottom:0.5px solid #D1D9F5;">
+            <span style="font-size:10px;font-weight:700;color:#1A3FCB;text-transform:uppercase;letter-spacing:.08em;">Certificación</span>
+          </div>
+          ${actRows(CA, ST[vi].cert, '#1A3FCB')}
+        </div>
+        <div>
+          <div style="padding:8px 16px;background:#E0F5EE;border-bottom:0.5px solid #B6E8D8;">
+            <span style="font-size:10px;font-weight:700;color:#0D7A5F;text-transform:uppercase;letter-spacing:.08em;">Habilitación</span>
+          </div>
+          ${actRows(HA, ST[vi].hab, '#0D7A5F')}
+        </div>
+      </div>
+    </div>`;
+  }
+
+  const attnVS = VSL.filter((_,vi)=>calcR(CA,ST[vi].cert)<.4||calcR(HA,ST[vi].hab)<.4);
+  const attnBlock = attnVS.length>0 ? `
+    <div style="background:#FEF3C7;border-left:4px solid #F5C300;border-radius:10px;padding:14px 18px;margin-bottom:24px;">
+      <div style="font-size:11px;font-weight:700;color:#92400E;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">⚠ VS que requieren atención</div>
+      ${attnVS.map(v=>`<div style="font-size:12px;color:#0F1117;margin-bottom:3px;">• ${v}</div>`).join('')}
+    </div>` : '';
+
+  const reportHTML = `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LACE · Reporte de Value Streams · ${fechaFile}</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:#F2F3F7;color:#0F1117;font-size:14px;line-height:1.5;}
+.wrap{max-width:900px;margin:0 auto;padding:32px 20px;}
+@media print{body{background:#FFF;}.wrap{padding:0;max-width:100%;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div style="background:#1230A0;border-radius:16px;overflow:hidden;margin-bottom:28px;">
+    <div style="height:5px;background:#F5C300;"></div>
+    <div style="padding:22px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="display:flex;gap:3px;align-items:center;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#F5C300;"></div>
+          <div style="width:9px;height:9px;border-radius:50%;background:#F5C300;"></div>
+          <div style="width:7px;height:7px;border-radius:50%;background:#F5C300;margin-top:1px;"></div>
+        </div>
+        <span style="font-size:20px;font-weight:700;color:#FFF;letter-spacing:-.02em;">Coppel</span>
+        <div style="width:1px;height:24px;background:rgba(255,255,255,0.2);margin:0 8px;"></div>
+        <div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.5);font-family:monospace;letter-spacing:.1em;text-transform:uppercase;">LACE</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.7);font-weight:500;">Reporte de Value Streams</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:monospace;font-size:10px;color:rgba(255,255,255,0.4);">Generado: ${fecha}</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px;">Solo lectura · LACE Grupo Coppel</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUMEN EJECUTIVO -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+    <div style="background:#FFF;border-radius:12px;padding:16px 18px;border:0.5px solid #E5E7EB;border-top:3px solid #1A3FCB;">
+      <div style="font-size:11px;color:#9499AD;font-weight:600;text-transform:uppercase;letter-spacing:.06em;">Promedio Certificación</div>
+      <div style="font-family:monospace;font-size:28px;font-weight:300;color:#1A3FCB;margin-top:6px;">${avgCert}%</div>
+    </div>
+    <div style="background:#FFF;border-radius:12px;padding:16px 18px;border:0.5px solid #E5E7EB;border-top:3px solid #0D7A5F;">
+      <div style="font-size:11px;color:#9499AD;font-weight:600;text-transform:uppercase;letter-spacing:.06em;">Promedio Habilitación</div>
+      <div style="font-family:monospace;font-size:28px;font-weight:300;color:#0D7A5F;margin-top:6px;">${avgHab}%</div>
+    </div>
+    <div style="background:#FFF;border-radius:12px;padding:16px 18px;border:0.5px solid #E5E7EB;border-top:3px solid #16A34A;">
+      <div style="font-size:11px;color:#9499AD;font-weight:600;text-transform:uppercase;letter-spacing:.06em;">VS con avance ≥80%</div>
+      <div style="font-family:monospace;font-size:28px;font-weight:300;color:#16A34A;margin-top:6px;">${vsOk}/${VSL.length}</div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW RÁPIDO -->
+  <div style="background:#FFF;border:0.5px solid #E5E7EB;border-radius:14px;overflow:hidden;margin-bottom:28px;">
+    <div style="padding:10px 18px;background:#F2F3F7;border-bottom:0.5px solid #E5E7EB;">
+      <span style="font-size:10px;font-weight:700;color:#9499AD;text-transform:uppercase;letter-spacing:.08em;">Resumen general</span>
+    </div>
+    ${VSL.map((v,vi)=>{
+      const cp=Math.round(calcR(CA,ST[vi].cert)*100), hp=Math.round(calcR(HA,ST[vi].hab)*100);
+      return `<div style="display:grid;grid-template-columns:200px 1fr 55px 1fr 55px;gap:10px;padding:10px 18px;border-bottom:0.5px solid #F3F4F6;align-items:center;">
+        <span style="font-size:12.5px;font-weight:500;color:#0F1117;">${v}</span>
+        <div><div style="background:#F3F4F6;border-radius:3px;height:5px;"><div style="width:${cp}%;height:5px;border-radius:3px;background:#1A3FCB;"></div></div></div>
+        <span style="font-family:monospace;font-size:12px;font-weight:700;text-align:right;color:${pcR(cp/100)}">${cp}%</span>
+        <div><div style="background:#F3F4F6;border-radius:3px;height:5px;"><div style="width:${hp}%;height:5px;border-radius:3px;background:#0D7A5F;"></div></div></div>
+        <span style="font-family:monospace;font-size:12px;font-weight:700;text-align:right;color:${pcR(hp/100)}">${hp}%</span>
+      </div>`;
+    }).join('')}
+  </div>
+
+  ${attnBlock}
+
+  <!-- DETALLE POR VS -->
+  <div style="font-size:10px;font-weight:700;color:#9499AD;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;padding-bottom:6px;border-bottom:0.5px solid #E5E7EB;">Detalle por Value Stream</div>
+  ${VSL.map((_,vi)=>buildVSSection(vi)).join('')}
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:20px 0;font-size:11px;color:#9499AD;">
+    Reporte generado por LACE · Grupo Coppel · ${fecha}<br>
+    <span style="font-size:10px;">Documento de solo lectura — para actualizar el seguimiento contacta al área LACE</span>
+  </div>
+</div>
+</body>
+</html>`;
+
+  const blob = new Blob([reportHTML], {type:'text/html;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `LACE_Reporte_VS_${fechaFile}.html`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
 render();
 </script>
 </body>
