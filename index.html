@@ -4,20 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LACE · Tracker de Value Streams · Coppel</title>
-    </head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --coppel-blue: #002e71; --coppel-yellow: #ffda00; }
+        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 20px; background-color: #f4f7f9; color: #333; }
+        .header { background-color: var(--coppel-blue); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-right: 15px solid var(--coppel-yellow); }
+        .container { max-width: 1000px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { margin: 0; font-size: 24px; }
+        h2 { color: var(--coppel-blue); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px; }
+        .instrucciones { background: #eef2f7; padding: 15px; border-left: 5px solid var(--coppel-blue); margin-bottom: 20px; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { background: #f8f9fa; text-align: left; padding: 12px; border-bottom: 2px solid #dee2e6; }
+        td { padding: 12px; border-bottom: 1px solid #eee; }
+        .desc { font-size: 0.85em; color: #666; display: block; }
+        select { padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 100%; }
+        .avance-card { background: var(--coppel-blue); color: white; padding: 15px; border-radius: 8px; text-align: center; margin-top: 10px; }
+        .avance-numero { font-size: 2em; font-weight: bold; color: var(--coppel-yellow); }
+    </style>
+</head>
 <body>
-    <section id="certificacion">
-        <h2>Certificación</h2>
-        <p><strong>Cómo se calcula:</strong> Promedio simple de las 8 actividades críticas. Cada una representa el 12.5%. (Terminado=100%, En Revisión=85%, etc.)</p>
-        <div id="tabla-certificacion"></div>
+
+<div class="container">
+    <div class="header">
+        <h1>LACE · Grupo Coppel</h1>
+        <p>Seguimiento de Actividades Críticas de Value Streams</p>
+    </div>
+
+    <section>
+        <h2>01. Certificación</h2>
+        <div class="instrucciones">
+            <strong>Cómo se calcula:</strong> Promedio simple de las 8 actividades (12.5% cada una).<br>
+            <em>Estados: Terminado (100%), En Revisión (85%), Req. actualización (70%), En Proceso (50%), No iniciado (0%).</em>
+        </div>
+        <table id="tablaCertificacion">
+            <thead>
+                <tr>
+                    <th style="width: 70%;">Actividad Crítica</th>
+                    <th style="width: 30%;">Estado / Avance</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="avance-card">
+            Avance Total Certificación: <span id="totalCert" class="avance-numero">0%</span>
+        </div>
     </section>
 
-    <section id="habilitacion">
-        <h2>Habilitación</h2>
-        <p><strong>Cómo se calcula:</strong> Promedio simple de las 8 actividades críticas. Cada una representa el 12.5%.</p>
-        <div id="tabla-habilitacion"></div>
+    <section>
+        <h2>02. Habilitación</h2>
+        <div class="instrucciones">
+            <strong>Cómo se calcula:</strong> Promedio simple de las 8 actividades de entregables (12.5% cada una).
+        </div>
+        <table id="tablaHabilitacion">
+            <thead>
+                <tr>
+                    <th style="width: 70%;">Actividad Crítica</th>
+                    <th style="width: 30%;">Estado / Avance</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="avance-card">
+            Avance Total Habilitación: <span id="totalHab" class="avance-numero">0%</span>
+        </div>
     </section>
+</div>
 
-    <script src="script.js"></script>
+<script>
+// DATOS DE LAS IMÁGENES
+const actividadesCert = [
+    { n: "Propósito Value Stream", d: "Roles involucrados y razón de ser del VS definido." },
+    { n: "Definición Flujo del Value Stream", d: "Etapas, disparadores, valor, propósito, alcance e identificación de etapas." },
+    { n: "Información de las etapas del VS", d: "Inputs, descripciones, usuarios, actividades clave, métricas y herramientas." },
+    { n: "Mapa de Tecnologías", d: "Inventario de sistemas y plataformas (desde el paso 3)." },
+    { n: "Inventario de Equipos / Staffing", d: "Capacidades de equipos, roles de liderazgo e involucrados." },
+    { n: "Taxonomía de Portafolio", d: "Validación de soluciones, inventario de equipos y estructura del portafolio." },
+    { n: "Confirmación de métricas (KPIs)", d: "Métricas de impacto al negocio y socialización de métricas de flujo." },
+    { n: "One page firmado", d: "Información requerida en el One Page firmado por los directores." }
+];
+
+const actividadesHab = [
+    { n: "Topología de Equipos del VS", d: "Mapa de topología de equipos (MIRO / Slides)." },
+    { n: "Staffing de Personas", d: "Lista AS IS, roles faltantes, dedicación (FT/PT) y jefe de línea." },
+    { n: "Modelo de Gobernanza del VS", d: "Documento de gobernanza y Calendario de Eventos Grupo Coppel." },
+    { n: "Eventos de Escalado y Sincronización", d: "Plan de capacitación y sesiones agendadas." },
+    { n: "Herramientas Habilitadas", d: "Jira, Confluence, Integración MIDDO-Jira y Guía de uso." },
+    { n: "Identificación de ARTs", d: "Registro de ARTs, Mapa visual y sesión de comunicación." },
+    { n: "Portafolio del VS Creado", d: "Portafolio en Jira con métricas de negocio declaradas." },
+    { n: "Roles y Responsabilidades", d: "Matriz RACI actualizada y publicación en Confluence." }
+];
+
+const niveles = { "No iniciado": 0, "En Proceso": 50, "Req. actualización": 70, "En Revisión": 85, "Terminado": 100 };
+
+function crearTabla(lista, tablaId, totalId) {
+    const tbody = document.querySelector(`#${tablaId} tbody`);
+    lista.forEach((act, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><strong>${index + 1}. ${act.n}</strong><span class="desc">${act.d}</span></td>
+            <td>
+                <select onchange="calcular('${tablaId}', '${totalId}')">
+                    ${Object.keys(niveles).map(k => `<option value="${niveles[k]}">${k}</option>`).join('')}
+                </select>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function calcular(tablaId, totalId) {
+    const selects = document.querySelectorAll(`#${tablaId} select`);
+    let suma = 0;
+    selects.forEach(s => suma += parseInt(s.value));
+    const promedio = (suma / selects.length).toFixed(1);
+    document.getElementById(totalId).innerText = promedio + "%";
+}
+
+// Inicializar
+crearTabla(actividadesCert, "tablaCertificacion", "totalCert");
+crearTabla(actividadesHab, "tablaHabilitacion", "totalHab");
+</script>
+
 </body>
 </html>
