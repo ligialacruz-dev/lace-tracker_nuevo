@@ -7,16 +7,38 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:#F5F4F0;--surface:#FFF;--surface2:#EFEDE8;
-  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);
-  --text:#1A1917;--text2:#6B6860;--text3:#9B9890;
-  --coppel-navy:#1B2B6B;--coppel-yellow:#F5C300;
-  --purple:#1B2B6B;--purple-bg:#E8EBF5;--purple-text:#1B2B6B;
-  --teal:#1D9E75;--teal-bg:#E1F5EE;--teal-text:#085041;
-  --amber:#BA7517;--amber-bg:#FAEEDA;--amber-text:#633806;
-  --red:#E24B4A;--red-bg:#FCEBEB;--red-text:#791F1F;
-  --green:#639922;--green-bg:#EAF3DE;--green-text:#27500A;
-  --blue:#378ADD;--blue-bg:#E6F1FB;--blue-text:#0C447C;
+  /* ── Coppel brand palette oficial ── */
+  --c-blue:#1C42E8;       /* Blue */
+  --c-yellow:#F0D224;     /* Yellow */
+  --c-medium-blue:#05297A;/* Medium Blue */
+  --c-dark-blue:#081754;  /* Dark Blue */
+  --c-light-blue:#1CA8F7; /* Light Blue */
+  --c-beige:#EEE8E3;      /* Beige */
+  --c-lgrey:#C9C9C9;      /* Light Grey */
+  --c-grey:#8C8C8C;       /* Grey */
+  --c-dgrey:#4A4A4A;      /* Dark Grey */
+
+  /* ── Aliases funcionales ── */
+  --bg:#F7F8FC;
+  --surface:#FFFFFF;
+  --surface2:#EEF1FA;
+  --border:rgba(5,41,122,0.08);
+  --border2:rgba(5,41,122,0.15);
+  --text:#081754;
+  --text2:#4A4A4A;
+  --text3:#8C8C8C;
+
+  /* Sidebar usa Dark Blue */
+  --coppel-navy:#081754;
+  --coppel-yellow:#F0D224;
+
+  /* Accent chips */
+  --purple:#05297A;--purple-bg:#E8EEFB;--purple-text:#05297A;
+  --teal:#05297A;--teal-bg:#E0E9F8;--teal-text:#05297A;
+  --amber:#c07d00;--amber-bg:#FEF3D0;--amber-text:#7a4e00;
+  --red:#D93025;--red-bg:#FDECEA;--red-text:#7B1D14;
+  --green:#1E8A3C;--green-bg:#E2F4E8;--green-text:#0D4D20;
+  --blue:#1C42E8;--blue-bg:#E8EEFB;--blue-text:#05297A;
   --r-sm:6px;--r-md:10px;--r-lg:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -35,7 +57,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .sb-section{padding:12px 10px 6px;}
 .sb-label{font-size:10px;font-weight:500;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.08em;padding:0 8px;margin-bottom:4px;}
 
-/* ── Avance general del proyecto en sidebar ── */
 .sb-project{margin:10px 10px 0;background:rgba(245,195,0,0.12);border:1px solid rgba(245,195,0,0.22);border-radius:var(--r-md);padding:10px 12px;}
 .sb-proj-lbl{font-size:9px;font-weight:500;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
 .sb-proj-num{font-family:'DM Mono',monospace;font-size:28px;font-weight:300;color:var(--coppel-yellow);line-height:1;}
@@ -58,7 +79,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .eyebrow{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
 .mtitle{font-size:22px;font-weight:500;color:var(--text);}
 
-/* ── Tarjeta avance general en encabezado ── */
 .proj-card{background:var(--coppel-navy);border-radius:var(--r-lg);padding:16px 20px;margin-bottom:20px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;}
 .proj-card-left .pc-eyebrow{font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
 .proj-card-left .pc-title{font-size:14px;font-weight:500;color:#FFF;margin-bottom:10px;}
@@ -72,13 +92,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .pc-bar-wrap{margin-top:8px;height:6px;background:rgba(255,255,255,0.12);border-radius:3px;width:180px;}
 .pc-bar-fill{height:6px;border-radius:3px;background:var(--coppel-yellow);transition:width .4s ease;}
 .pc-vs-breakdown{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px;}
-.pc-vs-dot{width:8px;height:8px;border-radius:2px;display:inline-block;}
 
 .tabs{display:flex;gap:6px;margin-bottom:20px;border-bottom:0.5px solid var(--border2);padding-bottom:12px;}
 .tab-btn{background:none;border:0.5px solid transparent;padding:6px 16px;border-radius:20px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text2);cursor:pointer;transition:all .15s;}
 .tab-btn:hover{background:var(--surface2);color:var(--text);}
-.tab-btn.ac{background:#E8EBF5;color:var(--coppel-navy);border-color:rgba(27,43,107,.2);font-weight:500;}
-.tab-btn.ah{background:var(--teal-bg);color:var(--teal-text);border-color:rgba(29,158,117,.2);font-weight:500;}
+.tab-btn.ac{background:#E8EEFB;color:var(--c-blue);border-color:rgba(28,66,232,.2);font-weight:500;}
+.tab-btn.ah{background:#E0E9F8;color:var(--c-medium-blue);border-color:rgba(5,41,122,.2);font-weight:500;}
 .tab-btn.ax{background:var(--surface2);color:var(--text);border-color:var(--border2);font-weight:500;}
 
 .mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
@@ -90,8 +109,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .banner strong{font-weight:500;display:block;margin-bottom:2px;}
 
 .import-banner{background:var(--surface);border:1.5px dashed var(--border2);border-radius:var(--r-lg);padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .15s;}
-.import-banner:hover{border-color:var(--coppel-navy);background:#E8EBF5;}
-.import-icon{width:40px;height:40px;border-radius:var(--r-md);background:#E8EBF5;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
+.import-banner:hover{border-color:var(--c-blue);background:#E8EEFB;}
+.import-icon{width:40px;height:40px;border-radius:var(--r-md);background:#E8EEFB;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
 .import-txt strong{font-size:13px;font-weight:500;color:var(--text);display:block;}
 .import-txt span{font-size:12px;color:var(--text2);}
 .import-stamp{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);margin-top:6px;display:block;}
@@ -108,8 +127,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .bwrap{margin-top:6px;background:var(--bg);border-radius:3px;height:4px;}
 .bfill{height:4px;border-radius:3px;transition:width .3s;}
 .ssel{width:100%;padding:6px 8px;border:0.5px solid var(--border2);border-radius:var(--r-sm);font-family:'DM Sans',sans-serif;font-size:12px;background:var(--surface);color:var(--text);cursor:pointer;outline:none;}
-.ssel:focus{border-color:var(--coppel-navy);}
-.ssel.imported{border-color:rgba(27,43,107,.3);background:#E8EBF5;}
+.ssel:focus{border-color:var(--c-blue);}
+.ssel.imported{border-color:rgba(28,66,232,.3);background:#E8EEFB;}
 .pcol{text-align:right;}
 .pnum{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;color:var(--text);}
 .spill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;margin-top:4px;font-family:'DM Mono',monospace;}
@@ -130,13 +149,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .crow{display:grid;grid-template-columns:200px 1fr 60px 1fr 60px;gap:10px;padding:11px 16px;border-bottom:0.5px solid var(--border);align-items:center;cursor:pointer;transition:background .1s;}
 .crow:last-child{border-bottom:none;}
 .crow:hover{background:#FAFAF8;}
-.crow.ca{background:#E8EBF5;}
+.crow.ca{background:#E8EEFB;}
 .cvn{font-size:13px;color:var(--text);}
-.crow.ca .cvn{font-weight:500;color:var(--coppel-navy);}
+.crow.ca .cvn{font-weight:500;color:var(--c-blue);}
 .cpct{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;text-align:right;}
 .cimp{font-size:9px;color:var(--blue-text);font-family:'DM Mono',monospace;display:block;}
 
-/* ── Fila de totales en comparativo ── */
 .crow-total{display:grid;grid-template-columns:200px 1fr 60px 1fr 60px;gap:10px;padding:12px 16px;align-items:center;background:var(--coppel-navy);border-top:2px solid var(--coppel-yellow);}
 .crow-total .cvn{font-size:13px;font-weight:500;color:var(--coppel-yellow);}
 .crow-total .cpct{color:var(--coppel-yellow);}
@@ -148,6 +166,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .abtn:hover{background:var(--surface2);}
 .abtn.g{background:var(--green-bg);color:var(--green-text);border-color:rgba(99,153,34,.25);}
 .abtn.b{background:var(--blue-bg);color:var(--blue-text);border-color:rgba(55,138,221,.25);}
+.abtn.share{background:#E8EEFB;color:var(--c-blue);border-color:rgba(28,66,232,.25);font-weight:500;}
 .abtn.r{background:none;border:none;color:var(--red);text-decoration:underline;font-size:12px;cursor:pointer;padding:7px 4px;}
 .bhint{font-size:11px;color:var(--text3);line-height:1.6;}
 #toast{display:none;margin-top:10px;padding:8px 12px;border-radius:var(--r-sm);font-size:12px;}
@@ -155,9 +174,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 #exparea textarea{width:100%;height:180px;font-family:'DM Mono',monospace;font-size:11px;padding:10px;border:0.5px solid var(--border2);border-radius:var(--r-sm);background:var(--surface);color:var(--text);resize:vertical;outline:none;}
 .panel{display:none;}.panel.v{display:block;}
 
+/* ── Readonly mode banner ── */
+.readonly-banner{background:var(--amber-bg);border:1px solid rgba(186,117,23,.3);border-radius:var(--r-md);padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--amber-text);}
+.readonly-banner strong{font-weight:500;}
+.readonly-banner .ro-close{margin-left:auto;background:none;border:none;cursor:pointer;font-size:16px;color:var(--amber-text);line-height:1;}
+
+/* ── Share modal ── */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:100;align-items:center;justify-content:center;}
 .modal-bg.open{display:flex;}
-.modal{background:var(--surface);border-radius:var(--r-lg);padding:24px;width:520px;max-width:95vw;border:0.5px solid var(--border2);}
+.modal{background:var(--surface);border-radius:var(--r-lg);padding:24px;width:560px;max-width:95vw;border:0.5px solid var(--border2);}
 .modal h3{font-size:16px;font-weight:500;margin-bottom:6px;}
 .modal p{font-size:12px;color:var(--text2);margin-bottom:16px;line-height:1.6;}
 .modal-steps{background:var(--bg);border-radius:var(--r-md);padding:14px 16px;margin-bottom:16px;}
@@ -170,6 +195,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .drop-zone:hover,.drop-zone.drag{border-color:var(--coppel-navy);background:#E8EBF5;}
 .drop-zone p{font-size:13px;color:var(--text2);}
 .drop-zone small{font-size:11px;color:var(--text3);}
+
+/* ── Share modal específico ── */
+.share-tabs{display:flex;gap:0;margin-bottom:16px;border:0.5px solid var(--border2);border-radius:var(--r-sm);overflow:hidden;}
+.share-tab{flex:1;padding:8px;border:none;background:var(--surface2);font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text2);cursor:pointer;transition:all .15s;}
+.share-tab.act{background:var(--c-dark-blue);color:#FFF;font-weight:500;}
+.share-panel{display:none;}
+.share-panel.v{display:block;}
+.url-box{display:flex;gap:8px;margin-bottom:10px;}
+.url-input{flex:1;font-family:'DM Mono',monospace;font-size:11px;padding:8px 10px;border:0.5px solid var(--border2);border-radius:var(--r-sm);background:var(--bg);color:var(--text);outline:none;}
+.share-opts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.share-opt{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);cursor:pointer;}
+.share-opt input{cursor:pointer;}
+.share-hint{font-size:11px;color:var(--text3);line-height:1.6;background:var(--bg);padding:8px 10px;border-radius:var(--r-sm);}
+.share-copy-area{width:100%;height:160px;font-family:'DM Mono',monospace;font-size:11px;padding:10px;border:0.5px solid var(--border2);border-radius:var(--r-sm);background:var(--bg);color:var(--text);resize:vertical;outline:none;margin-bottom:10px;}
+.share-status{font-size:11px;padding:6px 10px;border-radius:var(--r-sm);display:none;}
 </style>
 </head>
 <body>
@@ -179,14 +219,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="sb-head">
     <div class="sb-topbar"></div>
     <div class="sb-brand">
-      <span class="sb-logo-dashes">---</span><span class="sb-logo-text">Coppel</span>
+      <!-- Logo Coppel oficial SVG -->
+      <svg width="110" height="28" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Puntos: amarillo, azul claro, azul medio -->
+        <circle cx="5" cy="18" r="4.5" fill="#F0D224"/>
+        <circle cx="15" cy="18" r="4.5" fill="#1CA8F7"/>
+        <circle cx="25" cy="18" r="4.5" fill="#1C42E8"/>
+        <!-- Wordmark "Coppel" -->
+        <text x="34" y="22" font-family="'Segoe UI',Arial,sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" letter-spacing="0.3">Coppel</text>
+      </svg>
       <div class="sb-divider"></div>
       <span class="sb-lace">LACE<br>Tracker</span>
     </div>
     <div class="sb-subtitle">Seguimiento de Value Streams</div>
   </div>
 
-  <!-- Avance general del proyecto en sidebar -->
   <div class="sb-project">
     <div class="sb-proj-lbl">Avance general del proyecto</div>
     <div class="sb-proj-num" id="sb-proj-num">0%</div>
@@ -204,18 +251,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
   <div class="sb-foot">
     <span class="dot"></span>Auto-guardado activo<br><br>
-    <strong>Importar Sheet:</strong> descarga el Excel de cada VS y usa el botón "Importar Sheet".<br><br>
+    <strong>Compartir:</strong> usa el botón "Compartir / Exportar" para generar un enlace o texto.<br><br>
     <strong>Guardar .json</strong> para respaldar todo.
   </div>
 </aside>
 
 <main class="main">
+  <div id="readonly-banner" class="readonly-banner" style="display:none;">
+    <span>👁</span>
+    <span><strong>Modo lectura</strong> — estás viendo datos compartidos por otro usuario. Puedes hacer cambios pero solo se guardarán en tu navegador.</span>
+    <button class="ro-close" onclick="document.getElementById('readonly-banner').style.display='none'">×</button>
+  </div>
+
   <div class="mhead">
     <div class="eyebrow" id="eyebrow">—</div>
     <div class="mtitle">Seguimiento de actividades críticas</div>
   </div>
 
-  <!-- Tarjeta avance general del proyecto -->
   <div class="proj-card" id="proj-card">
     <div class="proj-card-left">
       <div class="pc-eyebrow">Avance general del proyecto LACE</div>
@@ -255,9 +307,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <button class="tab-btn"    id="tx" onclick="switchTab('comp')">Vista comparativa</button>
   </div>
 
-  <!-- Panel Certificación -->
   <div class="panel v" id="pc2">
-    <div class="banner" style="background:#E8EBF5;color:var(--coppel-navy);">
+    <div class="banner" style="background:#E8EEFB;color:var(--c-blue);">
       <strong>Cómo se calcula — Certificación</strong>
       Promedio ponderado: Terminado=100% · En Revisión=85% · Req. actualización=70% · En Proceso=50% · Bloqueado/No iniciado=0%. Peso doble = cuenta el doble. Los estados en azul fueron importados del Sheet. Puedes sobreescribirlos con tu propio criterio.
     </div>
@@ -277,9 +328,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="lgrid" id="lgc"></div>
   </div>
 
-  <!-- Panel Habilitación -->
   <div class="panel" id="ph">
-    <div class="banner" style="background:var(--teal-bg);color:var(--teal-text);">
+    <div class="banner" style="background:#E0F3FD;color:var(--c-medium-blue);">
       <strong>Cómo se calcula — Habilitación</strong>
       Promedio ponderado: Terminado=100% · En Revisión=85% · Req. actualización=70% · En Proceso=50% · Bloqueado/No iniciado=0%. Peso doble = cuenta el doble. Los estados en azul fueron importados del Sheet. Puedes sobreescribirlos con tu propio criterio.
     </div>
@@ -299,7 +349,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="lgrid" id="lgh"></div>
   </div>
 
-  <!-- Panel Comparativo -->
   <div class="panel" id="px">
     <div class="banner" style="background:var(--surface2);color:var(--text2);border:0.5px solid var(--border2);">
       <strong>Vista comparativa — todos los Value Streams</strong>
@@ -312,18 +361,32 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div id="exparea"><textarea id="exptxt" readonly></textarea></div>
   </div>
 
-  <!-- Bottom bar -->
+  <!-- Reporte rápido para compartir -->
+  <div class="bbar" style="border:1.5px solid rgba(27,43,107,0.2);background:var(--purple-bg);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <div style="font-size:18px;">📤</div>
+      <div>
+        <div style="font-size:13px;font-weight:500;color:var(--coppel-navy);">Enviar reporte a alguien</div>
+        <div style="font-size:11px;color:var(--text2);">Genera un PDF con todos los avances — el destinatario lo abre directamente, sin instalar nada.</div>
+      </div>
+      <button class="abtn" onclick="imprimirReporte()" style="margin-left:auto;background:var(--coppel-navy);color:#FFF;border-color:var(--coppel-navy);font-weight:500;padding:9px 20px;white-space:nowrap;flex-shrink:0;">Generar PDF del reporte</button>
+    </div>
+    <div style="font-size:11px;color:var(--text2);line-height:1.6;padding:8px 10px;background:rgba(255,255,255,0.6);border-radius:var(--r-sm);">
+      <strong>Cómo funciona:</strong> se abre una ventana con el reporte completo → elige <strong>Guardar como PDF</strong> en la impresora → listo para enviar por correo o Teams.
+    </div>
+  </div>
+
   <div class="bbar">
     <div class="bbar-title">Gestión de datos</div>
     <div class="brow">
+      <button class="abtn share" onclick="openShare()">🔗 Compartir / Exportar</button>
       <button class="abtn b" onclick="openImport()">📥 Importar Sheet (.xlsx / .csv)</button>
       <button class="abtn g" onclick="guardarJSON()">↓ Guardar datos (.json)</button>
       <button class="abtn" onclick="document.getElementById('fi').click()">↑ Cargar datos (.json)</button>
       <input type="file" id="fi" accept=".json" style="display:none" onchange="cargarJSON(event)">
-      <button class="abtn" onclick="exportResumen()">Exportar resumen como texto</button>
       <button class="abtn r" onclick="clearAll()">Borrar todos los datos</button>
     </div>
-    <div class="bhint"><span class="dot"></span>Auto-guardado en este navegador. Para otro equipo: <strong>Guardar .json</strong> → copia el archivo → <strong>Cargar .json</strong>.</div>
+    <div class="bhint"><span class="dot"></span>Auto-guardado en este navegador. Para otro equipo: <strong>Guardar .json</strong> o usa <strong>Compartir → Enlace</strong>.</div>
     <div id="toast"></div>
   </div>
 </main>
@@ -357,9 +420,84 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
 </div>
 
+<!-- Share Modal -->
+<div class="modal-bg" id="share-modal-bg" onclick="closeShareIfBg(event)">
+  <div class="modal" style="width:600px;">
+    <h3>Compartir datos del tracker</h3>
+    <p>Elige cómo quieres compartir el estado actual del proyecto con tu equipo.</p>
+
+    <div class="share-tabs">
+      <button class="share-tab act" id="st-link" onclick="shareTabSwitch('link')">📄 HTML completo</button>
+      <button class="share-tab" id="st-text" onclick="shareTabSwitch('text')">📋 Texto / correo</button>
+      <button class="share-tab" id="st-json" onclick="shareTabSwitch('json')">💾 Archivo .json</button>
+    </div>
+
+    <!-- Tab: HTML completo -->
+    <div class="share-panel v" id="sp-link">
+      <div style="font-size:12px;color:var(--text2);margin-bottom:12px;line-height:1.6;">
+        Genera un <strong>archivo HTML con los datos incrustados</strong>. El destinatario lo abre en cualquier navegador y ve el tracker completo — sin instalar nada, sin URL, sin servidor.
+      </div>
+      <div class="modal-steps">
+        <div class="modal-step"><div class="step-num">1</div><div>Haz clic en <strong>Descargar HTML con datos</strong></div></div>
+        <div class="modal-step"><div class="step-num">2</div><div>Envía el archivo por correo, Drive, Teams o Slack</div></div>
+        <div class="modal-step"><div class="step-num">3</div><div>El destinatario lo abre con doble clic — se abre en el navegador con todos los avances cargados</div></div>
+      </div>
+      <div class="share-opts" style="margin-bottom:12px;">
+        <label class="share-opt">
+          <input type="checkbox" id="share-readonly" checked>
+          Mostrar aviso de "modo lectura" al destinatario
+        </label>
+      </div>
+      <button class="abtn share" onclick="generateShareHTML()" style="width:100%;text-align:center;padding:10px;">⬇ Descargar HTML con datos</button>
+      <div class="share-status" id="share-url-status" style="margin-top:8px;"></div>
+    </div>
+
+    <!-- Tab: Texto -->
+    <div class="share-panel" id="sp-text">
+      <div style="font-size:12px;color:var(--text2);margin-bottom:10px;line-height:1.6;">
+        Genera un resumen de texto plano listo para pegar en un correo, Teams o Slack.
+      </div>
+      <div class="share-opts">
+        <label class="share-opt">
+          <input type="radio" name="txt-scope" value="all" checked> Todos los VS
+        </label>
+        <label class="share-opt">
+          <input type="radio" name="txt-scope" value="current"> Solo VS actual (<span id="txt-vs-name"></span>)
+        </label>
+        <label class="share-opt">
+          <input type="checkbox" id="txt-include-notes" checked> Incluir observaciones
+        </label>
+        <label class="share-opt">
+          <input type="checkbox" id="txt-include-detail"> Incluir detalle por actividad
+        </label>
+      </div>
+      <button class="abtn share" onclick="generateText()" style="width:100%;text-align:center;margin-bottom:10px;">Generar texto</button>
+      <textarea class="share-copy-area" id="share-txt-out" readonly placeholder="El resumen aparecerá aquí…"></textarea>
+      <button class="abtn b" onclick="copyShareText()" style="width:100%;text-align:center;">Copiar texto</button>
+      <div class="share-status" id="share-txt-status"></div>
+    </div>
+
+    <!-- Tab: JSON -->
+    <div class="share-panel" id="sp-json">
+      <div style="font-size:12px;color:var(--text2);margin-bottom:16px;line-height:1.6;">
+        Descarga un archivo <strong>.json</strong> con todos los datos. El destinatario lo puede cargar con el botón "↑ Cargar datos (.json)" en su navegador y tendrá el tracker completo.
+      </div>
+      <div class="modal-steps">
+        <div class="modal-step"><div class="step-num">1</div><div>Haz clic en <strong>Descargar .json</strong> aquí abajo</div></div>
+        <div class="modal-step"><div class="step-num">2</div><div>Envía el archivo por correo, Drive, Teams o Slack</div></div>
+        <div class="modal-step"><div class="step-num">3</div><div>El destinatario abre el tracker y hace clic en <strong>↑ Cargar datos (.json)</strong></div></div>
+      </div>
+      <button class="abtn g" onclick="guardarJSON()" style="width:100%;text-align:center;margin-top:8px;">Descargar .json</button>
+    </div>
+
+    <div class="modal-btns" style="margin-top:16px;">
+      <button class="abtn" onclick="closeShare()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
-// ── VS Afore agregado al final ──
 const VSL=[
   'VS Onboarding y VP',
   'VS Tarjetas de Crédito',
@@ -370,7 +508,7 @@ const VSL=[
   'VS Captación',
   'VS Plataformas Digitales',
   'VS Pagos',
-  'VS Afore',  // ← NUEVO
+  'VS Afore',
 ];
 
 const CA=[
@@ -419,8 +557,8 @@ const HA_KEYS=[
 
 const STS=['No iniciado','En Proceso','En Revisión','Requiere actualización','Bloqueado','Terminado'];
 const SPCT={'No iniciado':0,'En Proceso':.5,'En Revisión':.85,'Requiere actualización':.7,'Bloqueado':0,'Terminado':1};
-const SCOL={'No iniciado':'#B4B2A9','En Proceso':'#EF9F27','En Revisión':'#378ADD','Requiere actualización':'#D4537E','Bloqueado':'#E24B4A','Terminado':'#639922'};
-const SPIL={'Terminado':'background:#EAF3DE;color:#27500A;','En Proceso':'background:#FAEEDA;color:#633806;','En Revisión':'background:#E6F1FB;color:#0C447C;','Requiere actualización':'background:#FBEAF0;color:#72243E;','Bloqueado':'background:#FCEBEB;color:#791F1F;','No iniciado':'background:#F1EFE8;color:#5F5E5A;'};
+const SCOL={'No iniciado':'#8C8C8C','En Proceso':'#F0D224','En Revisión':'#1C42E8','Requiere actualización':'#1CA8F7','Bloqueado':'#D93025','Terminado':'#1E8A3C'};
+const SPIL={'Terminado':'background:#E2F4E8;color:#0D4D20;','En Proceso':'background:#FEF9D0;color:#7a4e00;','En Revisión':'background:#E8EEFB;color:#05297A;','Requiere actualización':'background:#E0F3FD;color:#05297A;','Bloqueado':'background:#FDECEA;color:#7B1D14;','No iniciado':'background:#F0F0F0;color:#4A4A4A;'};
 
 function normSt(raw){
   if(!raw) return 'No iniciado';
@@ -442,7 +580,7 @@ function normSt(raw){
   return 'No iniciado';
 }
 
-function matchAct(name, keys){
+function matchAct(name,keys){
   const n=String(name).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   for(let i=0;i<keys.length;i++){
     const kset=keys[i];
@@ -478,22 +616,22 @@ function init(){
 
 let ST=init();
 
+
+
 function calc(acts,items){
   let tp=0,ts=0;
   acts.forEach((a,i)=>{const p=SPCT[items[i].status]??0;tp+=a.p;ts+=p*a.p;});
   return tp?ts/tp:0;
 }
 
-function pc(p){return p>=.8?'#639922':p>=.4?'#BA7517':'#E24B4A';}
+function pc(p){return p>=.8?'#1E8A3C':p>=.4?'#c07d00':'#D93025';}
 
-// ── Cálculo avance general del proyecto ──
 function calcProyecto(){
-  let totalCert=0, totalHab=0, vsDone=0;
+  let totalCert=0,totalHab=0,vsDone=0;
   VSL.forEach((_,vi)=>{
     const cp=calc(CA,ST[vi].cert);
     const hp=calc(HA,ST[vi].hab);
-    totalCert+=cp;
-    totalHab+=hp;
+    totalCert+=cp;totalHab+=hp;
     if(cp>=1&&hp>=1) vsDone++;
   });
   const n=VSL.length;
@@ -508,23 +646,17 @@ function rProyecto(){
   const ovPct=Math.round(overall*100);
   const certPct=Math.round(certAvg*100);
   const habPct=Math.round(habAvg*100);
-
-  // Sidebar
   document.getElementById('sb-proj-num').textContent=ovPct+'%';
   document.getElementById('sb-proj-sub').textContent=vsDone+' de '+total+' VS completados';
   document.getElementById('sb-proj-fill').style.width=ovPct+'%';
   document.getElementById('sb-proj-cert').textContent='Cert: '+certPct+'%';
   document.getElementById('sb-proj-hab').textContent='Hab: '+habPct+'%';
-
-  // Tarjeta superior
   document.getElementById('pc-big').textContent=ovPct+'%';
   document.getElementById('pc-cert-avg').textContent=certPct+'%';
   document.getElementById('pc-hab-avg').textContent=habPct+'%';
   document.getElementById('pc-vs-done').textContent=vsDone;
   document.getElementById('pc-vs-total').textContent=total;
   document.getElementById('pc-bar-fill').style.width=ovPct+'%';
-
-  // Mini dots por VS
   const breakdown=document.getElementById('pc-vs-breakdown');
   breakdown.innerHTML=VSL.map((v,vi)=>{
     const cp=calc(CA,ST[vi].cert);
@@ -556,7 +688,7 @@ function rMet(type){
   const done=items.filter(x=>x.status==='Terminado').length;
   const inp=items.filter(x=>['En Proceso','En Revisión','Requiere actualización'].includes(x.status)).length;
   const non=items.filter(x=>x.status==='No iniciado'||x.status==='Bloqueado').length;
-  const col=type==='cert'?'var(--coppel-navy)':'var(--teal)';
+  const col=type==='cert'?'var(--c-blue)':'var(--c-light-blue)';
   document.getElementById(type==='cert'?'mc':'mh').innerHTML=`
     <div class="mcard"><div class="mnum" style="color:${col}">${Math.round(av*100)}%</div><div class="mlbl">Avance total (ponderado)</div></div>
     <div class="mcard"><div class="mnum" style="color:var(--green)">${done}</div><div class="mlbl">Terminadas</div></div>
@@ -583,7 +715,7 @@ function rList(type){
   document.getElementById(lid).innerHTML=acts.map((a,i)=>{
     const it=items[i];
     const pct=Math.round((SPCT[it.status]??0)*100);
-    const bc=SCOL[it.status]||'#B4B2A9';
+    const bc=SCOL[it.status]||'#8C8C8C';
     const pill=SPIL[it.status]||'';
     const hn=it.nota&&it.nota.trim().length>0;
     const esc=(it.nota||'').replace(/"/g,'&quot;').replace(/\n/g,'&#10;');
@@ -627,24 +759,21 @@ function rComp(){
     const impLabel=ST[vi].importedAt?'<span class="cimp">📥 importado</span>':'';
     return `<div class="crow${vi===cvs?' ca':''}" onclick="selVS(${vi});switchTab('cert')">
       <span class="cvn">${v}${impLabel}</span>
-      <div><div class="bwrap"><div class="bfill" style="width:${cpct}%;background:var(--coppel-navy)"></div></div></div>
+      <div><div class="bwrap"><div class="bfill" style="width:${cpct}%;background:var(--c-blue)"></div></div></div>
       <span class="cpct" style="color:${pc(cp)}">${cpct}%</span>
-      <div><div class="bwrap"><div class="bfill" style="width:${hpct}%;background:var(--teal)"></div></div></div>
+      <div><div class="bwrap"><div class="bfill" style="width:${hpct}%;background:var(--c-light-blue)"></div></div></div>
       <span class="cpct" style="color:${pc(hp)}">${hpct}%</span>
     </div>`;
   }).join('');
-
-  // Fila de totales
   const {certAvg,habAvg,overall}=calcProyecto();
   const certPct=Math.round(certAvg*100),habPct=Math.round(habAvg*100),ovPct=Math.round(overall*100);
   const totalRow=`<div class="crow-total">
     <span class="cvn">⬡ Promedio general del proyecto (${ovPct}%)</span>
     <div><div class="bwrap" style="background:rgba(255,255,255,0.15)"><div class="bfill" style="width:${certPct}%;background:var(--coppel-yellow)"></div></div></div>
     <span class="cpct">${certPct}%</span>
-    <div><div class="bwrap" style="background:rgba(255,255,255,0.15)"><div class="bfill" style="width:${habPct}%;background:#1D9E75"></div></div></div>
+    <div><div class="bwrap" style="background:rgba(255,255,255,0.15)"><div class="bfill" style="width:${habPct}%;background:#1CA8F7"></div></div></div>
     <span class="cpct">${habPct}%</span>
   </div>`;
-
   document.getElementById('cl').innerHTML=rows+totalRow;
 }
 
@@ -687,7 +816,6 @@ function openImport(){
   document.getElementById('drop-label').textContent='Arrastra el archivo .xlsx o .csv aquí';
   document.getElementById('modal-bg').classList.add('open');
 }
-
 function closeImport(){document.getElementById('modal-bg').classList.remove('open');}
 function closeImportIfBg(e){if(e.target===document.getElementById('modal-bg')) closeImport();}
 
@@ -697,7 +825,6 @@ function handleDrop(e){
   const f=e.dataTransfer.files[0];
   if(f) processFile(f);
 }
-
 function handleFileSelect(e){
   const f=e.target.files[0];
   if(f) processFile(f);
@@ -708,25 +835,19 @@ function processFile(file){
   const vsIdx=parseInt(document.getElementById('modal-vs-sel').value);
   const res=document.getElementById('modal-result');
   document.getElementById('drop-label').textContent='📄 '+file.name;
-
   const reader=new FileReader();
   reader.onload=function(e){
     try{
-      let certMatches=0, habMatches=0;
+      let certMatches=0,habMatches=0;
       const data=new Uint8Array(e.target.result);
       const wb=XLSX.read(data,{type:'array'});
-
       wb.SheetNames.forEach(sname=>{
         const ws=wb.Sheets[sname];
         const rows=XLSX.utils.sheet_to_json(ws,{defval:''});
         if(!rows.length) return;
-
         const cols=Object.keys(rows[0]).map(c=>c.toLowerCase());
-        const isHab=sname.toLowerCase().includes('habilitaci') ||
-          cols.some(c=>c.includes('actividad crítica')||c.includes('actividad critica'));
-        const isChecklist=sname.toLowerCase().includes('checklist') ||
-          cols.some(c=>c.includes('elemento'));
-
+        const isHab=sname.toLowerCase().includes('habilitaci')||cols.some(c=>c.includes('actividad crítica')||c.includes('actividad critica'));
+        const isChecklist=sname.toLowerCase().includes('checklist')||cols.some(c=>c.includes('elemento'));
         if(isHab){
           rows.forEach(row=>{
             const nameCol=Object.keys(row).find(k=>k.toLowerCase().includes('actividad')||k.toLowerCase().includes('crítica'));
@@ -737,14 +858,9 @@ function processFile(file){
             const rawSt=stCol?row[stCol]:(avCol?row[avCol]:'');
             const st=normSt(rawSt||row[avCol]);
             const idx=matchAct(name,HA_KEYS);
-            if(idx>=0){
-              ST[vsIdx].hab[idx].status=st;
-              ST[vsIdx].hab[idx].imported=true;
-              habMatches++;
-            }
+            if(idx>=0){ST[vsIdx].hab[idx].status=st;ST[vsIdx].hab[idx].imported=true;habMatches++;}
           });
         }
-
         if(isChecklist){
           rows.forEach(row=>{
             const nameCol=Object.keys(row).find(k=>k.toLowerCase().includes('elemento')||k.toLowerCase().includes('actividad'));
@@ -758,34 +874,23 @@ function processFile(file){
             const st=normSt(rawSt||row[avCol]);
             if(etapa.includes('cert')||etapa===''){
               const idx=matchAct(name,CA_KEYS);
-              if(idx>=0){
-                ST[vsIdx].cert[idx].status=st;
-                ST[vsIdx].cert[idx].imported=true;
-                certMatches++;
-              }
+              if(idx>=0){ST[vsIdx].cert[idx].status=st;ST[vsIdx].cert[idx].imported=true;certMatches++;}
             }
             if(etapa.includes('hab')){
               const idx=matchAct(name,HA_KEYS);
-              if(idx>=0){
-                ST[vsIdx].hab[idx].status=st;
-                ST[vsIdx].hab[idx].imported=true;
-                habMatches++;
-              }
+              if(idx>=0){ST[vsIdx].hab[idx].status=st;ST[vsIdx].hab[idx].imported=true;habMatches++;}
             }
           });
         }
       });
-
       const total=certMatches+habMatches;
       ST[vsIdx].importedAt=new Date().toISOString();
       ss(ST);
       if(cvs===vsIdx) render(); else {rNav();rProyecto();}
-
       res.style.cssText=`display:block;padding:10px 12px;border-radius:6px;font-size:12px;margin-bottom:12px;background:${total>0?'var(--green-bg)':'var(--amber-bg)'};color:${total>0?'var(--green-text)':'var(--amber-text)'};`;
       res.innerHTML=total>0
         ?`<strong>Importado correctamente para ${VSL[vsIdx]}</strong><br>Certificación: ${certMatches} actividades leídas · Habilitación: ${habMatches} actividades leídas.<br><small>Los estados están marcados en azul. Puedes sobreescribirlos con tu criterio.</small>`
         :`<strong>Archivo leído pero no se encontraron actividades reconocidas.</strong><br>Verifica que el archivo sea el Excel correcto del VS. El sistema busca en las pestañas "Habilitación" y "Checklists".`;
-
       setTimeout(()=>closeImport(),total>0?2500:0);
     }catch(err){
       res.style.cssText='display:block;padding:10px 12px;border-radius:6px;font-size:12px;margin-bottom:12px;background:var(--red-bg);color:var(--red-text);';
@@ -794,6 +899,134 @@ function processFile(file){
   };
   reader.readAsArrayBuffer(file);
 }
+
+// ── SHARE FUNCTIONS ──
+
+function openShare(){
+  document.getElementById('txt-vs-name').textContent=VSL[cvs];
+  document.getElementById('share-url-out').value='';
+  document.getElementById('share-txt-out').value='';
+  document.getElementById('share-url-status').style.display='none';
+  document.getElementById('share-txt-status').style.display='none';
+  document.getElementById('share-modal-bg').classList.add('open');
+}
+function closeShare(){document.getElementById('share-modal-bg').classList.remove('open');}
+function closeShareIfBg(e){if(e.target===document.getElementById('share-modal-bg')) closeShare();}
+
+function shareTabSwitch(tab){
+  ['link','text','json'].forEach(t=>{
+    document.getElementById('st-'+t).classList.toggle('act',t===tab);
+    document.getElementById('sp-'+t).classList.toggle('v',t===tab);
+  });
+}
+
+function generateShareHTML(){
+  const readonly=document.getElementById('share-readonly').checked;
+  const payload={version:'lace_v4',fecha:new Date().toISOString(),readonly:readonly,state:ST};
+  const dataJson=JSON.stringify(payload);
+
+  // Leer el HTML actual completo y reemplazar el bloque init() para precargar los datos
+  const currentHTML=document.documentElement.outerHTML;
+
+  // Inyectamos un script de precarga justo antes del cierre </body>
+  const injectScript=`<script>
+(function(){
+  try{
+    var p=${dataJson};
+    if(p&&p.state) localStorage.setItem('lace_v4',JSON.stringify(p.state));
+    if(p&&p.readonly) window._laceReadonly=true;
+  }catch(e){}
+})();
+<\/script>`;
+
+  // También inyectamos la detección del flag readonly al inicio del render
+  const readonlyDetect=`<script>
+window.addEventListener('DOMContentLoaded',function(){
+  if(window._laceReadonly){
+    var b=document.getElementById('readonly-banner');
+    if(b) b.style.display='flex';
+  }
+});
+<\/script>`;
+
+  const finalHTML=currentHTML
+    .replace('</body>',injectScript+readonlyDetect+'</body>');
+
+  const blob=new Blob([finalHTML],{type:'text/html;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  const fecha=new Date().toLocaleDateString('es-MX').replace(/\//g,'-');
+  a.download=`LACE_compartido_${fecha}.html`;
+  a.click();
+
+  const st=document.getElementById('share-url-status');
+  st.style.cssText='display:block;padding:6px 10px;border-radius:6px;font-size:11px;background:var(--green-bg);color:var(--green-text);';
+  st.textContent='¡Archivo descargado! Envíalo por correo, Drive o Teams. El destinatario lo abre directamente en su navegador.';
+}
+
+function generateText(){
+  const scope=document.querySelector('input[name="txt-scope"]:checked').value;
+  const inclNotes=document.getElementById('txt-include-notes').checked;
+  const inclDetail=document.getElementById('txt-include-detail').checked;
+  const {certAvg,habAvg,overall,vsDone}=calcProyecto();
+  const lines=[
+    'LACE · RESUMEN DE AVANCES','═'.repeat(52),
+    `Generado: ${new Date().toLocaleString('es-MX')}`,
+    '',
+    `AVANCE GENERAL DEL PROYECTO: ${Math.round(overall*100)}%`,
+    `  Certificación promedio : ${Math.round(certAvg*100)}%`,
+    `  Habilitación promedio  : ${Math.round(habAvg*100)}%`,
+    `  VS completados         : ${vsDone} de ${VSL.length}`,
+    '',
+  ];
+  const viList=scope==='all'?VSL.map((_,i)=>i):[cvs];
+  viList.forEach(vi=>{
+    const v=VSL[vi];
+    const cp=Math.round(calc(CA,ST[vi].cert)*100);
+    const hp=Math.round(calc(HA,ST[vi].hab)*100);
+    const imp=ST[vi].importedAt?` [imp. ${new Date(ST[vi].importedAt).toLocaleDateString('es-MX')}]`:'';
+    lines.push(`▸ ${v}${imp}`);
+    lines.push(`  Certificación: ${cp}%  |  Habilitación: ${hp}%`);
+    if(inclDetail){
+      lines.push('  — Certificación:');
+      CA.forEach((a,i)=>{
+        const it=ST[vi].cert[i];
+        lines.push(`     · ${a.n}: ${it.status}${it.imported?' [sheet]':''}`);
+        if(inclNotes&&it.nota&&it.nota.trim()) lines.push(`       Obs: ${it.nota.trim()}`);
+      });
+      lines.push('  — Habilitación:');
+      HA.forEach((a,i)=>{
+        const it=ST[vi].hab[i];
+        lines.push(`     · ${a.n}: ${it.status}${it.imported?' [sheet]':''}`);
+        if(inclNotes&&it.nota&&it.nota.trim()) lines.push(`       Obs: ${it.nota.trim()}`);
+      });
+    }
+    lines.push('');
+  });
+  document.getElementById('share-txt-out').value=lines.join('\n');
+}
+
+function copyShareText(){
+  const val=document.getElementById('share-txt-out').value;
+  if(!val){showShareStatus('txt','Primero genera el texto.','warn');return;}
+  navigator.clipboard.writeText(val).then(()=>{
+    showShareStatus('txt','¡Copiado al portapapeles!','ok');
+  }).catch(()=>{
+    document.getElementById('share-txt-out').select();
+    document.execCommand('copy');
+    showShareStatus('txt','¡Copiado!','ok');
+  });
+}
+
+function showShareStatus(type,msg,kind){
+  const el=document.getElementById('share-'+type+'-status');
+  const ok=kind==='ok';
+  el.style.cssText=`display:block;margin-top:8px;padding:6px 10px;border-radius:6px;font-size:11px;background:${ok?'var(--green-bg)':'var(--amber-bg)'};color:${ok?'var(--green-text)':'var(--amber-text)'};`;
+  el.textContent=msg;
+  setTimeout(()=>el.style.display='none',3000);
+}
+
+// ── Resto de funciones ──
 
 function clearAll(){
   if(!confirm('¿Seguro que quieres borrar todos los datos?\nEsta acción no se puede deshacer.')) return;
@@ -873,6 +1106,158 @@ function exportResumen(){
 }
 
 render();
+
+function imprimirReporte(){
+  const {certAvg,habAvg,overall,vsDone}=calcProyecto();
+  const certPct=Math.round(certAvg*100);
+  const habPct=Math.round(habAvg*100);
+  const ovPct=Math.round(overall*100);
+  const fecha=new Date().toLocaleString('es-MX',{dateStyle:'long',timeStyle:'short'});
+
+  function barSVG(pct,color){
+    return `<div style="display:flex;align-items:center;gap:8px;">
+      <div style="flex:1;height:8px;background:#EFEDE8;border-radius:4px;overflow:hidden;">
+        <div style="width:${pct}%;height:100%;background:${color};border-radius:4px;"></div>
+      </div>
+      <span style="font-family:monospace;font-size:12px;font-weight:600;color:${color};min-width:36px;text-align:right;">${pct}%</span>
+    </div>`;
+  }
+
+  function statusDot(st){
+    const c={'Terminado':'#1E8A3C','En Proceso':'#F0D224','En Revisión':'#1C42E8','Requiere actualización':'#1CA8F7','Bloqueado':'#D93025','No iniciado':'#8C8C8C'};
+    return `<span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${c[st]||'#8C8C8C'};margin-right:5px;vertical-align:middle;"></span>`;
+  }
+
+  // Tabla resumen
+  let summaryRows='';
+  VSL.forEach((v,vi)=>{
+    const cp=Math.round(calc(CA,ST[vi].cert)*100);
+    const hp=Math.round(calc(HA,ST[vi].hab)*100);
+    const avg=Math.round((cp+hp)/2);
+    const col=cp>=80&&hp>=80?'#1E8A3C':cp>=40||hp>=40?'#c07d00':'#D93025';
+    summaryRows+=`<tr style="border-bottom:0.5px solid #EFEDE8;">
+      <td style="padding:8px 12px;font-size:12px;">${v}${ST[vi].importedAt?'&nbsp;<span style="font-size:9px;color:#1C42E8;font-family:monospace;">📥</span>':''}</td>
+      <td style="padding:8px 12px;">${barSVG(cp,'#1C42E8')}</td>
+      <td style="padding:8px 12px;">${barSVG(hp,'#1CA8F7')}</td>
+      <td style="padding:8px 12px;text-align:center;font-family:monospace;font-size:13px;font-weight:700;color:${col};">${avg}%</td>
+    </tr>`;
+  });
+
+  // Detalle por VS
+  let details='';
+  VSL.forEach((v,vi)=>{
+    const cp=Math.round(calc(CA,ST[vi].cert)*100);
+    const hp=Math.round(calc(HA,ST[vi].hab)*100);
+    details+=`<div style="margin-bottom:24px;break-inside:avoid;">
+      <div style="background:#081754;color:#FFF;padding:10px 16px;border-radius:8px 8px 0 0;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;font-weight:500;">${v}</span>
+        <span style="font-size:11px;color:#F5C300;font-family:monospace;">${ST[vi].importedAt?'📥 importado · ':''}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border:0.5px solid #EFEDE8;border-top:none;border-radius:0 0 8px 8px;overflow:hidden;">
+        <div style="padding:12px 16px;border-right:0.5px solid #EFEDE8;">
+          <div style="font-size:10px;font-weight:500;color:#9B9890;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">Certificación · ${cp}%</div>
+          ${CA.map((a,i)=>{const it=ST[vi].cert[i];return `<div style="margin-bottom:5px;font-size:11px;">${statusDot(it.status)}<span style="color:#1A1917;">${a.n}</span>${it.nota&&it.nota.trim()?`<div style="font-size:10px;color:#9B9890;margin-left:13px;margin-top:1px;">↳ ${it.nota.trim()}</div>`:''}</div>`;}).join('')}
+        </div>
+        <div style="padding:12px 16px;">
+          <div style="font-size:10px;font-weight:500;color:#9B9890;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">Habilitación · ${hp}%</div>
+          ${HA.map((a,i)=>{const it=ST[vi].hab[i];return `<div style="margin-bottom:5px;font-size:11px;">${statusDot(it.status)}<span style="color:#1A1917;">${a.n}</span>${it.nota&&it.nota.trim()?`<div style="font-size:10px;color:#9B9890;margin-left:13px;margin-top:1px;">↳ ${it.nota.trim()}</div>`:''}</div>`;}).join('')}
+        </div>
+      </div>
+    </div>`;
+  });
+
+  // Leyenda de estados
+  const legendItems=Object.entries({'Terminado':'#1E8A3C','En Proceso':'#F0D224','En Revisión':'#1C42E8','Requiere actualización':'#1CA8F7','Bloqueado':'#D93025','No iniciado':'#8C8C8C'})
+    .map(([s,c])=>`<span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:10px;color:#6B6860;"><span style="width:9px;height:9px;border-radius:2px;background:${c};display:inline-block;"></span>${s}</span>`).join('');
+
+  const html=`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+<title>LACE · Reporte de avances</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#FFF;color:#1A1917;font-size:13px;line-height:1.5;}
+  @media print{
+    body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .no-print{display:none!important;}
+    .page-break{page-break-before:always;}
+  }
+</style>
+</head><body style="padding:32px 40px;max-width:960px;margin:0 auto;">
+
+  <!-- Botón imprimir (no aparece en PDF) -->
+  <div class="no-print" style="position:fixed;top:20px;right:20px;z-index:99;">
+    <button onclick="window.print()" style="background:#081754;color:#FFF;border:none;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;">
+      ⬇ Guardar como PDF
+    </button>
+    <button onclick="window.close()" style="background:#EFEDE8;color:#1A1917;border:none;padding:10px 16px;border-radius:8px;font-size:14px;cursor:pointer;margin-left:8px;">
+      Cerrar
+    </button>
+  </div>
+
+  <!-- Encabezado -->
+  <div style="background:#081754;border-radius:12px;padding:20px 28px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-start;">
+    <div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">
+        <svg width="90" height="22" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="5" cy="18" r="4.5" fill="#F0D224"/>
+          <circle cx="15" cy="18" r="4.5" fill="#1CA8F7"/>
+          <circle cx="25" cy="18" r="4.5" fill="#1C42E8"/>
+          <text x="34" y="22" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" letter-spacing="0.3">Coppel</text>
+        </svg>
+      </div>
+      <div style="font-size:20px;font-weight:500;color:#FFF;margin-bottom:14px;">Reporte de avances del proyecto</div>
+      <div style="display:flex;gap:24px;">
+        <div><div style="font-family:monospace;font-size:28px;font-weight:300;color:#F5C300;">${certPct}%</div><div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:2px;">Certificación</div></div>
+        <div><div style="font-family:monospace;font-size:28px;font-weight:300;color:#1CA8F7;">${habPct}%</div><div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:2px;">Habilitación</div></div>
+        <div><div style="font-family:monospace;font-size:28px;font-weight:300;color:#FFF;">${vsDone}/${VSL.length}</div><div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:2px;">VS completos</div></div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:monospace;font-size:52px;font-weight:300;color:#F5C300;line-height:1;">${ovPct}%</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px;">avance total</div>
+    </div>
+  </div>
+
+  <!-- Generado -->
+  <div style="font-size:11px;color:#9B9890;margin-bottom:20px;">Generado el ${fecha}</div>
+
+  <!-- Tabla resumen -->
+  <div style="font-size:11px;font-weight:500;color:#9B9890;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Resumen por Value Stream</div>
+  <table style="width:100%;border-collapse:collapse;border:0.5px solid #EFEDE8;border-radius:10px;overflow:hidden;margin-bottom:32px;">
+    <thead>
+      <tr style="background:#F5F4F0;">
+        <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:500;color:#9B9890;text-transform:uppercase;letter-spacing:.07em;">Value Stream</th>
+        <th style="padding:8px 12px;font-size:10px;font-weight:500;color:#9B9890;text-transform:uppercase;letter-spacing:.07em;">Certificación</th>
+        <th style="padding:8px 12px;font-size:10px;font-weight:500;color:#9B9890;text-transform:uppercase;letter-spacing:.07em;">Habilitación</th>
+        <th style="padding:8px 12px;text-align:center;font-size:10px;font-weight:500;color:#9B9890;text-transform:uppercase;letter-spacing:.07em;">Promedio</th>
+      </tr>
+    </thead>
+    <tbody>${summaryRows}</tbody>
+    <tfoot>
+      <tr style="background:#081754;">
+        <td style="padding:10px 12px;font-size:12px;font-weight:500;color:#F5C300;">⬡ Promedio general</td>
+        <td style="padding:10px 12px;">${barSVG(certPct,'#F5C300')}</td>
+        <td style="padding:10px 12px;">${barSVG(habPct,'#1CA8F7')}</td>
+        <td style="padding:10px 12px;text-align:center;font-family:monospace;font-size:14px;font-weight:700;color:#F5C300;">${ovPct}%</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- Leyenda -->
+  <div style="margin-bottom:28px;padding:10px 14px;background:#F5F4F0;border-radius:8px;">${legendItems}</div>
+
+  <!-- Detalle por VS -->
+  <div style="font-size:11px;font-weight:500;color:#9B9890;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Detalle por Value Stream</div>
+  ${details}
+
+</body></html>`;
+
+  const w=window.open('','_blank','width=1000,height=800');
+  w.document.write(html);
+  w.document.close();
+  setTimeout(()=>w.focus(),300);
+}
 </script>
+
+
 </body>
 </html>
