@@ -1230,11 +1230,11 @@ function imprimirReporte(selectedVS){
       <div style="display:grid;grid-template-columns:1fr 1fr;border:0.5px solid #EFEDE8;border-top:none;border-radius:0 0 8px 8px;overflow:hidden;">
         <div style="padding:12px 16px;border-right:0.5px solid #EFEDE8;">
           <div style="font-size:10px;font-weight:500;color:#8C8C8C;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">Certificación · ${cp}%</div>
-          ${CA.map((a,i)=>{const it=ST[vi].cert[i];return `<div style="margin-bottom:5px;font-size:11px;">${statusDot(it.status)}<span style="color:#081754;">${a.n}</span>${it.nota&&it.nota.trim()?`<div style="font-size:10px;color:#8C8C8C;margin-left:13px;margin-top:1px;">↳ ${it.nota.trim()}</div>`:''}</div>`;}).join('')}
+          ${CA.map((a,i)=>{const it=ST[vi].cert[i];const stc={'Terminado':'#1E8A3C','En Proceso':'#c07d00','En Revisión':'#1C42E8','Requiere actualización':'#05297A','Bloqueado':'#D93025','No iniciado':'#4A4A4A'}[it.status]||'#4A4A4A';return `<div style="margin-bottom:7px;font-size:11px;"><div style="display:flex;align-items:baseline;gap:5px;">${statusDot(it.status)}<span style="color:#081754;flex:1;">${a.n}</span><span style="font-size:10px;font-weight:600;color:${stc};white-space:nowrap;">${it.status}</span></div>${it.nota&&it.nota.trim()?`<div style="font-size:10px;color:#8C8C8C;margin-left:13px;margin-top:1px;">↳ ${it.nota.trim()}</div>`:''}</div>`;}).join('')}
         </div>
         <div style="padding:12px 16px;">
           <div style="font-size:10px;font-weight:500;color:#8C8C8C;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">Habilitación · ${hp}%</div>
-          ${HA.map((a,i)=>{const it=ST[vi].hab[i];return `<div style="margin-bottom:5px;font-size:11px;">${statusDot(it.status)}<span style="color:#081754;">${a.n}</span>${it.nota&&it.nota.trim()?`<div style="font-size:10px;color:#8C8C8C;margin-left:13px;margin-top:1px;">↳ ${it.nota.trim()}</div>`:''}</div>`;}).join('')}
+          ${HA.map((a,i)=>{const it=ST[vi].hab[i];const stc={'Terminado':'#1E8A3C','En Proceso':'#c07d00','En Revisión':'#1C42E8','Requiere actualización':'#05297A','Bloqueado':'#D93025','No iniciado':'#4A4A4A'}[it.status]||'#4A4A4A';return `<div style="margin-bottom:7px;font-size:11px;"><div style="display:flex;align-items:baseline;gap:5px;">${statusDot(it.status)}<span style="color:#081754;flex:1;">${a.n}</span><span style="font-size:10px;font-weight:600;color:${stc};white-space:nowrap;">${it.status}</span></div>${it.nota&&it.nota.trim()?`<div style="font-size:10px;color:#8C8C8C;margin-left:13px;margin-top:1px;">↳ ${it.nota.trim()}</div>`:''}</div>`;}).join('')}
         </div>
       </div>
     </div>`;
